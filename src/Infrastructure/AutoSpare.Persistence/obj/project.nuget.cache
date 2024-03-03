@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "PnyRxo0/mSrGLtKna7f9L0XCxgJUH2IRB6wYn6xvPLK/GDrJC5maSlXc2SLcLNLx1PwI34O3u/zWFCa7Y4Bexg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\sahin\\source\\repos\\AutoSpare\\src\\Infrastructure\\AutoSpare.Persistence\\AutoSpare.Persistence.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sahin\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

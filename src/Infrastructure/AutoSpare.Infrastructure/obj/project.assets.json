@@ -1,0 +1,109 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "AutoSpare.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "AutoSpare.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AutoSpare.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AutoSpare.Application.dll": {}
+        }
+      },
+      "AutoSpare.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/AutoSpare.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AutoSpare.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AutoSpare.Application/1.0.0": {
+      "type": "project",
+      "path": "../../Core/AutoSpare.Application/AutoSpare.Application.csproj",
+      "msbuildProject": "../../Core/AutoSpare.Application/AutoSpare.Application.csproj"
+    },
+    "AutoSpare.Domain/1.0.0": {
+      "type": "project",
+      "path": "../../Core/AutoSpare.Domain/AutoSpare.Domain.csproj",
+      "msbuildProject": "../../Core/AutoSpare.Domain/AutoSpare.Domain.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "AutoSpare.Application >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\sahin\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\sahin\\source\\repos\\AutoSpare\\src\\Infrastructure\\AutoSpare.Infrastructure\\AutoSpare.Infrastructure.csproj",
+      "projectName": "AutoSpare.Infrastructure",
+      "projectPath": "C:\\Users\\sahin\\source\\repos\\AutoSpare\\src\\Infrastructure\\AutoSpare.Infrastructure\\AutoSpare.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\sahin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sahin\\source\\repos\\AutoSpare\\src\\Infrastructure\\AutoSpare.Infrastructure\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\sahin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {
+            "C:\\Users\\sahin\\source\\repos\\AutoSpare\\src\\Core\\AutoSpare.Application\\AutoSpare.Application.csproj": {
+              "projectPath": "C:\\Users\\sahin\\source\\repos\\AutoSpare\\src\\Core\\AutoSpare.Application\\AutoSpare.Application.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

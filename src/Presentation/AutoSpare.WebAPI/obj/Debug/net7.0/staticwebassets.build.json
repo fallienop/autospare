@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "1oMYKZ+jMKPQ6DKa59ntJRSEwXhIL2bs2E1txvX9Pnw=",
+  "Source": "AutoSpare.WebAPI",
+  "BasePath": "_content/AutoSpare.WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
