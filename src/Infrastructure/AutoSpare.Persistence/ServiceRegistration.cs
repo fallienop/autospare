@@ -1,5 +1,6 @@
-﻿using AutoSpare.Application.Abstractions;
-using AutoSpare.Persistence.Concretes;
+﻿using AutoSpare.Persistence.Contexts;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,14 @@ namespace AutoSpare.Persistence
 {
     public static class ServiceRegistration
     {
-        public static void AddPersistenceServices( this IServiceCollection services) 
+        public static void AddPersistenceServices(this IServiceCollection services)
         {
-            services.AddSingleton<IMakeService, MakeService>();
+                
+
+            services.AddDbContext<AutoSpareDbContext>(opt => {
+                opt.UseSqlServer(DbConnectionStringConfiguration.ConnectionString);
+
+            });
         }
     }
 }
