@@ -15,13 +15,13 @@ namespace AutoSpare.Domain.Entities.Product
         public Model Model { get; set; } = null!;
 
         [Range(1960, 2030, ErrorMessage = "Please enter a valid year.")]
-        public int Year { get; set; }
+        public ushort Year { get; set; }
 
-        [Range(0, long.MaxValue, ErrorMessage = "Please enter a valid price.")]
-        public long Price { get; set; }
+     [Range(0, long.MaxValue, ErrorMessage = "Please enter a valid price.")]
+        public decimal Price { get; set; }
 
         [Range(0, int.MaxValue, ErrorMessage = "Please enter a valid stock quantity.")]
-        public int Stock { get; set; }
+        public ushort Stock { get; set; }
 
         public ICollection <Order>? Orders { get; set; }
 
