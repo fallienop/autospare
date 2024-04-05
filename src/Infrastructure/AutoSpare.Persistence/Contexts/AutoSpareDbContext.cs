@@ -24,11 +24,18 @@ namespace AutoSpare.Persistence.Contexts
         public DbSet<Part> Parts { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Category> Categories { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Make>().ToTable(nameof(Make), ProductSchema);
             modelBuilder.Entity<Model>().ToTable(nameof(Domain.Entities.Product.Model), ProductSchema);
             modelBuilder.Entity<Part>().ToTable(nameof(Part), ProductSchema);
+            modelBuilder.Entity<Part>().Property(x => x.Price).HasColumnType("decimal(18,2)");
+            modelBuilder.Entity<Category>()
+        .HasMany(c => c.Subcategories)
+        .WithOne(c => c.ParentCategory)
+        .HasForeignKey(c => c.ParentCategoryId)
+        .OnDelete(DeleteBehavior.Restrict);
         }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
@@ -38,16 +45,19 @@ namespace AutoSpare.Persistence.Contexts
 
             foreach (var data in datas)
             {
-               _ =   data.State switch
+                _ = data.State switch
                 {
-                    EntityState.Added=> data.Entity.CreatedDate=DateTime.Now,
-                    EntityState.Modified=>data.Entity.UpdatedDate=DateTime.Now
-                };
+                    EntityState.Added => data.Entity.CreatedDate = DateTime.Now,
+                    EntityState.Modified => data.Entity.UpdatedDate = DateTime.Now,
+                    _ => DateTime.UtcNow
+                } ;
 
             }
-                return await base.SaveChangesAsync(cancellationToken);
+            var resp= await base.SaveChangesAsync(cancellationToken);
+            return resp;
 
 
         }
+
     }
 }

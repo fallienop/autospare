@@ -22,7 +22,7 @@ namespace AutoSpare.Persistence.Repositories
 
         public DbSet<T> Table => _dbContext.Set<T>();
 
-        public  async Task<IQueryable<T>> GetAll(bool tracking = true)
+        public  IQueryable<T> GetAll(bool tracking = true)
         {
             var query = Table.AsQueryable();
 
@@ -31,7 +31,7 @@ namespace AutoSpare.Persistence.Repositories
                 query=query.AsNoTracking();
             }
           
-                return await Task.FromResult(query).ConfigureAwait(false);
+                return  query;
 
         }
                
@@ -64,6 +64,7 @@ namespace AutoSpare.Persistence.Repositories
             {
                 query = query.AsNoTracking();
             }
+
             return await query.FirstOrDefaultAsync(entity => entity.Id == Guid.Parse(id));
         }
 

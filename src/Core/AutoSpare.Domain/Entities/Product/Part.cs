@@ -23,7 +23,10 @@ namespace AutoSpare.Domain.Entities.Product
         [Range(0, int.MaxValue, ErrorMessage = "Please enter a valid stock quantity.")]
         public ushort Stock { get; set; }
 
-        public ICollection <Order>? Orders { get; set; }
+        public ICollection<Order>? Orders { get; set; }
+        public string? ImageName { get; set; }
+
+
 
     }
 }

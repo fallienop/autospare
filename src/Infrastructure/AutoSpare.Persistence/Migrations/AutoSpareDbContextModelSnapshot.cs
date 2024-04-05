@@ -22,6 +22,31 @@ namespace AutoSpare.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("AutoSpare.Domain.Entities.Category", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<byte[]>("ImageData")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("ParentCategoryId")
+                        .IsRequired()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentCategoryId");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("AutoSpare.Domain.Entities.Customer", b =>
                 {
                     b.Property<Guid>("Id")
@@ -125,6 +150,10 @@ namespace AutoSpare.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<byte[]>("ImageData")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<Guid>("ModelId")
                         .HasColumnType("uniqueidentifier");
 
@@ -132,8 +161,8 @@ namespace AutoSpare.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("Price")
-                        .HasColumnType("bigint");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Stock")
                         .HasColumnType("int");
@@ -164,6 +193,17 @@ namespace AutoSpare.Persistence.Migrations
                     b.HasIndex("PartsId");
 
                     b.ToTable("OrderPart");
+                });
+
+            modelBuilder.Entity("AutoSpare.Domain.Entities.Category", b =>
+                {
+                    b.HasOne("AutoSpare.Domain.Entities.Category", "ParentCategory")
+                        .WithMany("Subcategories")
+                        .HasForeignKey("ParentCategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ParentCategory");
                 });
 
             modelBuilder.Entity("AutoSpare.Domain.Entities.Order", b =>
@@ -212,6 +252,11 @@ namespace AutoSpare.Persistence.Migrations
                         .HasForeignKey("PartsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("AutoSpare.Domain.Entities.Category", b =>
+                {
+                    b.Navigation("Subcategories");
                 });
 
             modelBuilder.Entity("AutoSpare.Domain.Entities.Customer", b =>

@@ -11,8 +11,10 @@ namespace AutoSpare.Application.Repositories
     {
         Task<bool> AddAsync(T entity);
         Task<bool> AddRangeAsync(List<T> entities);
-         Task<bool> RemoveAsync(string id);  
+         //Task<bool> RemoveAsync(string id);  
         bool Remove (T entity);
+       Task< bool> RemoveByIdAsync(string id);
+
         bool RemoveRange (List<T> entities);    
         bool Update(T entity);
 

@@ -1,12 +1,25 @@
-
+﻿
+using AutoSpare.Application;
+using AutoSpare.Infrastructure;
 using AutoSpare.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+
+builder.Services.AddCors(opt =>
+{
+    opt.AddDefaultPolicy(policy =>
+    {
+        //WithOrigins içinə web səhifənin linki ( linkləri) yazılacaq
+        policy.WithOrigins("link").AllowAnyHeader().AllowAnyMethod();
+    });
+});
+
 builder.Services.AddPersistenceServices();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddInfrastructureServices();
+builder.Services.AddApplicationRegistration();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -18,6 +31,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors();
 
 app.UseHttpsRedirection();
 

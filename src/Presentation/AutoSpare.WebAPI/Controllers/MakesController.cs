@@ -1,7 +1,16 @@
-﻿using AutoSpare.Application.Repositories.ProductRepos.MakeRepo;
+﻿using AutoSpare.Application.CQRSFeatures.Commands.Makes.AddNewMake;
+using AutoSpare.Application.CQRSFeatures.Commands.Makes.DeleteMake;
+using AutoSpare.Application.CQRSFeatures.Commands.Makes.UpdateMake;
+using AutoSpare.Application.CQRSFeatures.Queries.Makes.GetAllMakes;
+using AutoSpare.Application.CQRSFeatures.Queries.Makes.GetMakeById;
+using AutoSpare.Application.Repositories.ProductRepos.MakeRepo;
 using AutoSpare.Domain.Entities.Product;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
+using System.Net;
+using System.Text;
 
 namespace AutoSpare.WebAPI.Controllers
 {
@@ -9,42 +18,69 @@ namespace AutoSpare.WebAPI.Controllers
     [ApiController]
     public class MakesController : ControllerBase
     { 
-        private readonly IMakeReadRepository _makeReadRepository;
-        private readonly IMakeWriteRepository _makeWriteRepository;
+        private readonly IMediator _mediator;
 
-        public MakesController(IMakeReadRepository makeReadRepository, IMakeWriteRepository makeWriteRepository)
+        public MakesController(IMediator mediator)
         {
-            _makeReadRepository = makeReadRepository;
-            _makeWriteRepository = makeWriteRepository;
+            _mediator = mediator;
         }
-        [HttpGet("/add")]
-        public async Task<IActionResult> AddMakes()
+
+
+        [HttpGet]
+        public IActionResult GetAllMakes()
         {
-            var makesToAdd = new List<Make>
+            var allMakes = _mediator.Send(new GetAllMakesQueryRequest());
+            return Ok(allMakes.Result);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetMakeById([FromRoute]GetMakeByIdQueryRequest request)
         {
-            new Make
+            var make = await _mediator.Send(request);
+            if (make == null)
             {
-                Id = Guid.NewGuid(),
-                Name = "Mercedes",
-                CreatedDate = DateTime.Now
-            },
-            new Make
-            {
-                Id = Guid.NewGuid(),
-                Name = "Honda",
-                CreatedDate = DateTime.Now
+                return NotFound();
             }
-        };
-            await _makeWriteRepository.AddRangeAsync(makesToAdd);
-            await _makeWriteRepository.SaveAsync();
-            return Ok();
+            else
+            {
+                return Ok(make);
+            }
         }
 
-        [HttpGet]   
-        public async Task<IActionResult> GetMakes()
+        [HttpPost("/add")]
+        public async Task<IActionResult> AddMakes(AddMakeCommandRequest request)
         {
-           return Ok( await _makeReadRepository.GetAllAsync());
+            var resp =await _mediator.Send(request);
+            if (resp.Success)
+            {
+                return StatusCode((int)(HttpStatusCode.Created));
+            }
+            return StatusCode((int)(HttpStatusCode.NotAcceptable));
         }
-        
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteMake([FromRoute]DeleteMakeCommandRequest request)
+        {
+            var resp = await _mediator.Send(request);
+            if (resp.Success)
+            {
+                return StatusCode((int)(HttpStatusCode.OK));
+            }
+            return StatusCode((int)(HttpStatusCode.NotModified));
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateMake([FromBody] UpdateMakeCommandRequest request)
+        {
+            var resp=await _mediator.Send(request);
+            if (resp.Success)
+            {
+                return StatusCode((int)(HttpStatusCode.OK));
+            }
+            return StatusCode((int)(HttpStatusCode.NoContent));
+
+        }
+
+
     }
 }

@@ -25,7 +25,9 @@ namespace AutoSpare.Persistence
     {
         public static void AddPersistenceServices(this IServiceCollection services)
         {
-            services.AddDbContext<AutoSpareDbContext>(opt => {
+            services.AddDbContext<AutoSpareDbContext>(opt =>
+
+            {
                 opt.UseSqlServer(DbConnectionStringConfiguration.ConnectionString);
             });
                 

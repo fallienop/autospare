@@ -17,3 +17,4 @@ C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Persistence\o
 C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Persistence\obj\Debug\net7.0\refint\AutoSpare.Persistence.dll
 C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Persistence\obj\Debug\net7.0\AutoSpare.Persistence.pdb
 C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Persistence\obj\Debug\net7.0\ref\AutoSpare.Persistence.dll
+C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Persistence\obj\Debug\net7.0\AutoSpare.Persistence.sourcelink.json

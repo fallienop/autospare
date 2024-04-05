@@ -13,3 +13,4 @@ namespace AutoSpare.Domain.Entities.Common
         virtual public DateTime UpdatedDate { get; set; }
     }
 }
+    

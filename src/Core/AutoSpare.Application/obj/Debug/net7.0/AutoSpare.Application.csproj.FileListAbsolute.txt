@@ -13,3 +13,4 @@ C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Application\obj\Debug\n
 C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Application\obj\Debug\net7.0\refint\AutoSpare.Application.dll
 C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Application\obj\Debug\net7.0\AutoSpare.Application.pdb
 C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Application\obj\Debug\net7.0\ref\AutoSpare.Application.dll
+C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Application\obj\Debug\net7.0\AutoSpare.Application.sourcelink.json

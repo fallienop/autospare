@@ -83,3 +83,8 @@ C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\bin\Debu
 C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\bin\Debug\net7.0\System.CodeDom.dll
+C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net7.0\AutoSpare.WebAPI.sourcelink.json
+C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\bin\Debug\net7.0\AutoSpare.WebAPI.staticwebassets.runtime.json
+C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\bin\Debug\net7.0\MediatR.dll
+C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\bin\Debug\net7.0\MediatR.Contracts.dll
+C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\bin\Debug\net7.0\MediatR.Extensions.Microsoft.DependencyInjection.dll

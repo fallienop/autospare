@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "1oMYKZ+jMKPQ6DKa59ntJRSEwXhIL2bs2E1txvX9Pnw=",
+  "Hash": "mA2duls+n6+vco7krrhHjVTflsiNyhTNt7nKALBRgSo=",
   "Source": "AutoSpare.WebAPI",
   "BasePath": "_content/AutoSpare.WebAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "AutoSpare.WebAPI\\wwwroot",
+      "Source": "AutoSpare.WebAPI",
+      "ContentRoot": "C:\\Users\\sahin\\source\\repos\\AutoSpare\\src\\Presentation\\AutoSpare.WebAPI\\wwwroot\\",
+      "BasePath": "_content/AutoSpare.WebAPI",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

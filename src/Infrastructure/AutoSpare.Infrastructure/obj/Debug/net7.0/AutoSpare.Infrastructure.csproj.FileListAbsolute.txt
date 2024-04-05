@@ -15,3 +15,4 @@ C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructur
 C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\obj\Debug\net7.0\refint\AutoSpare.Infrastructure.dll
 C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\obj\Debug\net7.0\AutoSpare.Infrastructure.pdb
 C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\obj\Debug\net7.0\ref\AutoSpare.Infrastructure.dll
+C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\obj\Debug\net7.0\AutoSpare.Infrastructure.sourcelink.json

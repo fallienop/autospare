@@ -35,16 +35,23 @@ namespace AutoSpare.Persistence.Repositories
             return true;
         }
 
-        public async Task<bool> RemoveAsync(string id)
-        {
-            T data = await Table.FirstOrDefaultAsync(data => data.Id == Guid.Parse(id));
-            return Remove(data);
+        //public async Task<bool> RemoveAsync(string id)
+        //{
+        //    T data = await Table.FirstOrDefaultAsync(data => data.Id == Guid.Parse(id));
+        //    return Remove(data);
           
-        }
+        //}
 
         public bool Remove(T entity)
         {
           EntityEntry entityEntry=  Table.Remove(entity);
+            return entityEntry.State == EntityState.Deleted;
+        }
+        public async Task<bool> RemoveByIdAsync(string id)
+        {
+            var data =await  Table.FindAsync(Guid.Parse(id));
+          EntityEntry entityEntry=  Table.Remove(data);
+
             return entityEntry.State == EntityState.Deleted;
         }
 
@@ -61,6 +68,7 @@ namespace AutoSpare.Persistence.Repositories
         }
         public async Task<int> SaveAsync()
            => await _dbContext.SaveChangesAsync();
+
 
     }
 }

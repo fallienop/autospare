@@ -1,0 +1,34 @@
+﻿using AutoSpare.Application.Repositories.ProductRepos.ModelRepo;
+using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AutoSpare.Application.CQRSFeatures.Commands.Models.UpdateModel
+{
+    public class UpdateModelCommandHandler : IRequestHandler<UpdateModelCommandRequest, UpdateModelCommandResponse>
+    {
+        private readonly IModelWriteRepository _repository;
+
+        public UpdateModelCommandHandler(IModelWriteRepository repository)
+        {
+            _repository = repository;
+        }
+
+        public async Task<UpdateModelCommandResponse> Handle(UpdateModelCommandRequest request, CancellationToken cancellationToken)
+        {
+            _repository.Update(request.Model);
+            var resp = await _repository.SaveAsync();
+
+            if (resp > 0)
+            {
+                return new() { Success = true };
+
+            }
+            return new() { Success = false };
+
+        }
+    }
+}
