@@ -19,7 +19,7 @@ namespace AutoSpare.Application.CQRSFeatures.Queries.Models.GetModelById
 
         public async Task<GetModelByIdQueryResponse> Handle(GetModelByIdQueryRequest request, CancellationToken cancellationToken)
         {
-           var model= await _repository.GetByIdAsync(request.Id);
+           var model= await _repository.GetByIdAsync(request.Id,false);
             return new() {Model=model };
         }
     }

@@ -21,7 +21,7 @@ namespace AutoSpare.Application.CQRSFeatures.Queries.Makes.GetAllMakes
         {
 
             //var makes =  _makeReadRepository.GetAll(false).Skip(request.Page*request.Size).Take(request.Size).ToList();
-            var makes =  _makeReadRepository.GetAll(false).ToList();
+            var makes =  _makeReadRepository.GetAll(false);
             var response = new GetAllMakesQueryResponse()
             {
                 Makes = makes

@@ -1,10 +1,16 @@
 ﻿
+using AutoSpare.Application.Repositories.BrandRepo;
+using AutoSpare.Application.Repositories.CategoryRepo;
+using AutoSpare.Application.Repositories.CompanyRepo;
 using AutoSpare.Application.Repositories.CustomerRepo;
 using AutoSpare.Application.Repositories.OrderRepo;
 using AutoSpare.Application.Repositories.ProductRepos.MakeRepo;
 using AutoSpare.Application.Repositories.ProductRepos.ModelRepo;
 using AutoSpare.Application.Repositories.ProductRepos.PartRepo;
 using AutoSpare.Persistence.Contexts;
+using AutoSpare.Persistence.Repositories.BrandRepo;
+using AutoSpare.Persistence.Repositories.CategoryRepo;
+using AutoSpare.Persistence.Repositories.CompanyRepo;
 using AutoSpare.Persistence.Repositories.CustomerRepo;
 using AutoSpare.Persistence.Repositories.OrderRepo;
 using AutoSpare.Persistence.Repositories.ProductRepos.MakeRepo;
@@ -46,6 +52,15 @@ namespace AutoSpare.Persistence
 
             services.AddScoped<IPartReadRepository, PartReadRepository>();
             services.AddScoped<IPartWriteRepository, PartWriteRepository>();
+
+            services.AddScoped<ICategoryReadRepository, CategoryReadRepository>();
+            services.AddScoped<ICategoryWriteRepository, CategoryWriteRepository>();
+
+            services.AddScoped<IBrandReadRepository,BrandReadRepository>();
+            services.AddScoped<IBrandWriteRepository,BrandWriteRepository>();
+
+            services.AddScoped<ICompanyReadRepository, CompanyReadRepository>();
+            services.AddScoped<ICompanyWriteRepository, CompanyWriteRepository>();
 
         }
     }

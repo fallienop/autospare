@@ -19,7 +19,7 @@ namespace AutoSpare.Application.CQRSFeatures.Queries.Models.GetModelsOfMake
 
         public async Task<ModelOMakeQueryResponse> Handle(ModelOMakeQueryRequest request, CancellationToken cancellationToken)
         {
-            var models = _repository.GetWhere(x=>x.MakeId==Guid.Parse(request.Id));
+            var models = _repository.GetWhere(x=>x.MakeId==Guid.Parse(request.Id), false);
             return new() { Models = models };
         }
     }

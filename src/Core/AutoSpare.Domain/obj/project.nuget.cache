@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Zr/c0zwytcCVP3JFTSm98fOQsd9Hv4PWcq5CAKaZYH5td2BkMKn/Rx38AiAX3N0PBAJKDQjkZHPTOAg+BApHwg==",
+  "dgSpecHash": "FrUsONilcK/9Pc7CmucPoIG8O1Py5InO+Nt4WvVgsM8r/3gX80E89lRUAtC70teqxazHco1I3i6hksShRkGH2Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\sahin\\source\\repos\\AutoSpare\\src\\Core\\AutoSpare.Domain\\AutoSpare.Domain.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\sahin\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.17\\microsoft.windowsdesktop.app.ref.7.0.17.nupkg.sha512",
-    "C:\\Users\\sahin\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.17\\microsoft.netcore.app.ref.7.0.17.nupkg.sha512",
-    "C:\\Users\\sahin\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.17\\microsoft.aspnetcore.app.ref.7.0.17.nupkg.sha512"
+    "C:\\Users\\sahin\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.18\\microsoft.windowsdesktop.app.ref.7.0.18.nupkg.sha512",
+    "C:\\Users\\sahin\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.18\\microsoft.netcore.app.ref.7.0.18.nupkg.sha512",
+    "C:\\Users\\sahin\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.18\\microsoft.aspnetcore.app.ref.7.0.18.nupkg.sha512"
   ],
   "logs": []
 }

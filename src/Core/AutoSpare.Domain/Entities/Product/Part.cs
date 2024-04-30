@@ -1,10 +1,5 @@
 ﻿using AutoSpare.Domain.Entities.Common;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoSpare.Domain.Entities.Product
 {
@@ -15,9 +10,10 @@ namespace AutoSpare.Domain.Entities.Product
         public Model Model { get; set; } = null!;
 
         [Range(1960, 2030, ErrorMessage = "Please enter a valid year.")]
-        public ushort Year { get; set; }
+        public ushort StartYear { get; set; }
+        public ushort EndYear { get; set; }
 
-     [Range(0, long.MaxValue, ErrorMessage = "Please enter a valid price.")]
+        [Range(0, long.MaxValue, ErrorMessage = "Please enter a valid price.")]
         public decimal Price { get; set; }
 
         [Range(0, int.MaxValue, ErrorMessage = "Please enter a valid stock quantity.")]
@@ -25,8 +21,11 @@ namespace AutoSpare.Domain.Entities.Product
 
         public ICollection<Order>? Orders { get; set; }
         public string? ImageName { get; set; }
-
-
-
+        public Guid CategoryId { get; set; }
+        public Category Category { get; set; }
+        public Brand? Brand { get; set; }
+        public Guid? BrandId { get; set; }
+        public Company? Company { get; set; }
+        public Guid? CompanyId { get; set; }
     }
 }

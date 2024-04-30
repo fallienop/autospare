@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "miw1wSMbuLETASLcvYZO4c3tWRNzupvMTkzjslRU3fU6fGFIM3wfRyVhIAZaZkI9L2cu3asvwF7b15f3n9YfOw==",
+  "dgSpecHash": "PRLcPCq8lP5AXVGvRofV35CRyGA+xPjMVE6GekhsHWyhTmb0ymWPR+dxEDTB8Hl9G1cWBQDuMRaBE1ppQQ1VEA==",
   "success": true,
   "projectFilePath": "C:\\Users\\sahin\\source\\repos\\AutoSpare\\src\\Infrastructure\\AutoSpare.Persistence\\AutoSpare.Persistence.csproj",
   "expectedPackageFiles": [
@@ -82,9 +82,9 @@
     "C:\\Users\\sahin\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",
     "C:\\Users\\sahin\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\sahin\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
-    "C:\\Users\\sahin\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.17\\microsoft.windowsdesktop.app.ref.7.0.17.nupkg.sha512",
-    "C:\\Users\\sahin\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.17\\microsoft.netcore.app.ref.7.0.17.nupkg.sha512",
-    "C:\\Users\\sahin\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.17\\microsoft.aspnetcore.app.ref.7.0.17.nupkg.sha512"
+    "C:\\Users\\sahin\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.18\\microsoft.windowsdesktop.app.ref.7.0.18.nupkg.sha512",
+    "C:\\Users\\sahin\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.18\\microsoft.netcore.app.ref.7.0.18.nupkg.sha512",
+    "C:\\Users\\sahin\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.18\\microsoft.aspnetcore.app.ref.7.0.18.nupkg.sha512"
   ],
   "logs": []
 }

@@ -14,7 +14,7 @@ using System.Text;
 
 namespace AutoSpare.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class MakesController : ControllerBase
     { 
@@ -47,7 +47,7 @@ namespace AutoSpare.WebAPI.Controllers
             }
         }
 
-        [HttpPost("/add")]
+        [HttpPost]
         public async Task<IActionResult> AddMakes(AddMakeCommandRequest request)
         {
             var resp =await _mediator.Send(request);

@@ -13,7 +13,7 @@ builder.Services.AddCors(opt =>
     opt.AddDefaultPolicy(policy =>
     {
         //WithOrigins içinə web səhifənin linki ( linkləri) yazılacaq
-        policy.WithOrigins("link").AllowAnyHeader().AllowAnyMethod();
+        policy.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();
     });
 });
 
