@@ -19,7 +19,10 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Models.UpdateModel
 
         public async Task<UpdateModelCommandResponse> Handle(UpdateModelCommandRequest request, CancellationToken cancellationToken)
         {
-            _repository.Update(request.Model);
+            var model = await _repository.Table.FindAsync(request.Model.Id);
+           model.Name=request.Model.Name;
+            _repository.Update(model);
+            
             var resp = await _repository.SaveAsync();
 
             if (resp > 0)

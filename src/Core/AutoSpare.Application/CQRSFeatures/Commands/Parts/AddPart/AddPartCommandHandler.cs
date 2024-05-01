@@ -26,9 +26,8 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Parts.AddPart
                 EndYear=request.EndYear,
                 Price=request.Price,
                 Stock=request.Stock,
-                ImageName=request.ImageName,
+                Image = request.Image,
                 CategoryId=request.CategoryId,
-                CompanyId=request.CompanyId,
                 BrandId=request.BrandId
             });
 

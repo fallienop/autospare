@@ -10,7 +10,7 @@ namespace AutoSpare.Domain.Entities.Product
     public class Model : BaseEntity
     {
         public string Name { get; set; } = null!;
-        public Guid MakeId { get; set; }
-        public Make Make { get; set; } = null!;
+        public Guid? MakeId { get; set; }
+        public Make? Make { get; set; }
     }
 }

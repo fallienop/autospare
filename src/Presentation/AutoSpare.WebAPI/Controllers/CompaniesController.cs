@@ -59,7 +59,7 @@ namespace AutoSpare.WebAPI.Controllers
             }
             return StatusCode((int)(HttpStatusCode.NotModified));
         }
-
+            
         [HttpPut]
         public async Task<IActionResult> UpdateCompany([FromBody] UpdateCompanyCommandRequest request)
         {

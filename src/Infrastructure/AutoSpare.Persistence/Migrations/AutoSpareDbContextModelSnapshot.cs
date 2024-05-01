@@ -173,7 +173,7 @@ namespace AutoSpare.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("MakeId")
+                    b.Property<Guid?>("MakeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
@@ -211,7 +211,7 @@ namespace AutoSpare.Persistence.Migrations
                     b.Property<int>("EndYear")
                         .HasColumnType("int");
 
-                    b.Property<string>("ImageName")
+                    b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("ModelId")
@@ -286,9 +286,7 @@ namespace AutoSpare.Persistence.Migrations
                 {
                     b.HasOne("AutoSpare.Domain.Entities.Product.Make", "Make")
                         .WithMany()
-                        .HasForeignKey("MakeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MakeId");
 
                     b.Navigation("Make");
                 });

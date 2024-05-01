@@ -32,7 +32,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddPart(AddPartCommandRequest request)
+        public async Task<IActionResult> AddPart([FromBody] AddPartCommandRequest request)
         {
             var resp =await _mediator.Send(request);
 

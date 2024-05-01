@@ -11,6 +11,8 @@ namespace AutoSpare.Domain.Entities.Product
 
         [Range(1960, 2030, ErrorMessage = "Please enter a valid year.")]
         public ushort StartYear { get; set; }
+        [Range(1960, 2030, ErrorMessage = "Please enter a valid year.")]
+
         public ushort EndYear { get; set; }
 
         [Range(0, long.MaxValue, ErrorMessage = "Please enter a valid price.")]
@@ -20,7 +22,7 @@ namespace AutoSpare.Domain.Entities.Product
         public ushort Stock { get; set; }
 
         public ICollection<Order>? Orders { get; set; }
-        public string? ImageName { get; set; }
+        public string? Image { get; set; }
         public Guid CategoryId { get; set; }
         public Category Category { get; set; }
         public Brand? Brand { get; set; }

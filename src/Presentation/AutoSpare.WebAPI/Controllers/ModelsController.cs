@@ -72,7 +72,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateModel(UpdateModelCommandRequest request)
+        public async Task<IActionResult> UpdateModel([FromBody] UpdateModelCommandRequest request)
         {
             var resp=await _mediator.Send(request);
             if (resp.Success)
