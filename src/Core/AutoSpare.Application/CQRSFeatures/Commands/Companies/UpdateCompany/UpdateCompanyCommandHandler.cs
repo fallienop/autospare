@@ -20,6 +20,11 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Companies.UpdateCompany
         public async Task<UpdateCompanyCommandResponse> Handle(UpdateCompanyCommandRequest request, CancellationToken cancellationToken)
         {
             var company = await _repository.Table.FindAsync(request.Company.Id);
+            if (company == null)
+            {
+                return new() { Success = false };
+
+            }
             company.Name = request.Company.Name;
             _repository.Update(company);
             var resp = await _repository.SaveAsync();

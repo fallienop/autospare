@@ -10,3 +10,4 @@ C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Domain\obj\Debug\net7.0
 C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Domain\obj\Debug\net7.0\AutoSpare.Domain.pdb
 C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Domain\obj\Debug\net7.0\ref\AutoSpare.Domain.dll
 C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Domain\obj\Debug\net7.0\AutoSpare.Domain.sourcelink.json
+C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Domain\obj\Debug\net7.0\AutoSpare.Domain.csproj.AssemblyReference.cache

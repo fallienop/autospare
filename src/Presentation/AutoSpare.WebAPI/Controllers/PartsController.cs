@@ -1,5 +1,8 @@
 ﻿using AutoSpare.Application.CQRSFeatures.Commands.Parts.AddPart;
+using AutoSpare.Application.CQRSFeatures.Commands.Parts.DeletePart;
+using AutoSpare.Application.CQRSFeatures.Commands.Parts.UpdatePart;
 using AutoSpare.Application.CQRSFeatures.Queries.Parts.GetAllParts;
+using AutoSpare.Application.CQRSFeatures.Queries.Parts.GetPart;
 using AutoSpare.Application.CQRSFeatures.Queries.Parts.GetPartsByModel;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -25,11 +28,20 @@ namespace AutoSpare.WebAPI.Controllers
             return Ok(resp);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetPartsOfModel(GetPartsByModelQueryRequest request) { 
+        [HttpGet("partsofmodel/{id}")]
+        public IActionResult GetPartsOfModel([FromRoute]GetPartsByModelQueryRequest request) { 
         var resp=_mediator.Send(request);
             return Ok(resp);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetPartsById([FromRoute]GetPartQueryRequest request)
+        {
+            var resp = await _mediator.Send(request);
+            return Ok(resp);
+        }
+
+
 
         [HttpPost]
         public async Task<IActionResult> AddPart([FromBody] AddPartCommandRequest request)
@@ -46,5 +58,34 @@ namespace AutoSpare.WebAPI.Controllers
             }
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePart([FromRoute]DeletePartCommandRequest request)
+        {
+            var resp = await _mediator.Send(request);
+
+            if (resp.Success)
+            {
+                return StatusCode((int)HttpStatusCode.OK);
+            }
+            else
+            {
+                return StatusCode((int)HttpStatusCode.BadRequest);
+            }
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdatePart([FromBody]UpdatePartCommandRequest request)
+        {
+            var resp = await _mediator.Send(request);
+
+            if (resp.Success)
+            {
+                return StatusCode((int)HttpStatusCode.OK);
+            }
+            else
+            {
+                return StatusCode((int)HttpStatusCode.BadRequest);
+            }
+        }
     }
 }

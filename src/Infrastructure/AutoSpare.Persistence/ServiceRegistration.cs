@@ -7,6 +7,7 @@ using AutoSpare.Application.Repositories.OrderRepo;
 using AutoSpare.Application.Repositories.ProductRepos.MakeRepo;
 using AutoSpare.Application.Repositories.ProductRepos.ModelRepo;
 using AutoSpare.Application.Repositories.ProductRepos.PartRepo;
+using AutoSpare.Domain.Entities.Identity;
 using AutoSpare.Persistence.Contexts;
 using AutoSpare.Persistence.Repositories.BrandRepo;
 using AutoSpare.Persistence.Repositories.CategoryRepo;
@@ -36,7 +37,16 @@ namespace AutoSpare.Persistence
             {
                 opt.UseSqlServer(DbConnectionStringConfiguration.ConnectionString);
             });
-                
+            services.AddIdentityCore<AppUser>(opt =>
+            {
+                opt.Password.RequiredLength = 8;
+                opt.Password.RequireDigit= false;
+                opt.Password.RequireLowercase= false;
+                opt.Password.RequireUppercase= false;
+                opt.Password.RequireNonAlphanumeric= false;
+                opt.User.RequireUniqueEmail = true;
+            }).AddRoles<AppRole>().AddEntityFrameworkStores<AutoSpareDbContext>();
+
             services.AddScoped<ICustomerReadRepository,CustomerReadRepository>();  
             services.AddScoped<ICustomerWriteRepository,CustomerWriteRepository>();
 

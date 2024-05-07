@@ -1,6 +1,9 @@
 ﻿using AutoSpare.Domain.Entities;
 using AutoSpare.Domain.Entities.Common;
+using AutoSpare.Domain.Entities.Identity;
 using AutoSpare.Domain.Entities.Product;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace AutoSpare.Persistence.Contexts
 {
-    public class AutoSpareDbContext : DbContext
+    public class AutoSpareDbContext : IdentityDbContext<AppUser,AppRole,string>
     {
 
         public const string ProductSchema = "Product";
@@ -18,6 +21,8 @@ namespace AutoSpare.Persistence.Contexts
         public AutoSpareDbContext(DbContextOptions options) : base(options)
         {
         }
+
+   
 
         public DbSet<Make> Makes { get; set; }
         public DbSet<Model> Models { get; set; }
@@ -29,10 +34,12 @@ namespace AutoSpare.Persistence.Contexts
         public DbSet<Category> Categories { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Make>().ToTable(nameof(Make), ProductSchema);
             modelBuilder.Entity<Model>().ToTable(nameof(Domain.Entities.Product.Model), ProductSchema);
             modelBuilder.Entity<Part>().ToTable(nameof(Part), ProductSchema);
             modelBuilder.Entity<Part>().Property(x => x.Price).HasColumnType("decimal(18,2)");
+
             modelBuilder.Entity<Category>()
         .HasMany(c => c.Subcategories)
         .WithOne(c => c.ParentCategory)
