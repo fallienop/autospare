@@ -1,10 +1,3 @@
-C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\AutoSpare.WebAPI.csproj.AssemblyReference.cache
-C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\AutoSpare.WebAPI.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\AutoSpare.WebAPI.AssemblyInfoInputs.cache
-C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\AutoSpare.WebAPI.AssemblyInfo.cs
-C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\AutoSpare.WebAPI.csproj.CoreCompileInputs.cache
-C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\AutoSpare.WebAPI.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\AutoSpare.WebAPI.sourcelink.json
 C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\bin\Debug\net8.0\appsettings.json
 C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\bin\Debug\net8.0\AutoSpare.WebAPI.staticwebassets.runtime.json
@@ -81,6 +74,14 @@ C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\bin\Debu
 C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\bin\Debug\net8.0\AutoSpare.Persistence.pdb
 C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\bin\Debug\net8.0\AutoSpare.Domain.pdb
 C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\bin\Debug\net8.0\AutoSpare.Infrastructure.pdb
+C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\AutoSpare.WebAPI.csproj.AssemblyReference.cache
+C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\AutoSpare.WebAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\AutoSpare.WebAPI.AssemblyInfoInputs.cache
+C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\AutoSpare.WebAPI.AssemblyInfo.cs
+C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\AutoSpare.WebAPI.csproj.CoreCompileInputs.cache
+C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\AutoSpare.WebAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\AutoSpare.WebAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\AutoSpare.WebAPI.sourcelink.json
 C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\staticwebassets\msbuild.AutoSpare.WebAPI.Microsoft.AspNetCore.StaticWebAssets.props

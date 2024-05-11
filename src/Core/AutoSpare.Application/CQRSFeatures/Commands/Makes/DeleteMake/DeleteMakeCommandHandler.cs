@@ -21,16 +21,13 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Makes.DeleteMake
         {
             await _repository.RemoveByIdAsync(request.Id );
             var resp=await _repository.SaveAsync();
-            
-         
-            if (resp > 0)
+
+            return new()
             {
-                return new() { Success = true };
+                Success = resp > 0
+            };
 
-            }
-            return new() { Success = false };
 
-     
         }
     }
 }

@@ -23,12 +23,10 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Parts.UpdatePart
             var resp = await _repository.SaveAsync();
 
 
-            if (resp > 0)
+            return new()
             {
-                return new() { Success = true };
-
-            }
-            return new() { Success = false };
+                Success = resp > 0
+            };
         }
     }
 }

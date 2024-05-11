@@ -221,6 +221,24 @@ namespace AutoSpare.Persistence.Migrations
                     b.ToTable("Orders");
                 });
 
+            modelBuilder.Entity("AutoSpare.Domain.Entities.OrderPart", b =>
+                {
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PartId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.HasKey("OrderId", "PartId");
+
+                    b.HasIndex("PartId");
+
+                    b.ToTable("OrderPart");
+                });
+
             modelBuilder.Entity("AutoSpare.Domain.Entities.Plate", b =>
                 {
                     b.Property<Guid>("Id")
@@ -490,21 +508,6 @@ namespace AutoSpare.Persistence.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("OrderPart", b =>
-                {
-                    b.Property<Guid>("OrdersId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("PartsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("OrdersId", "PartsId");
-
-                    b.HasIndex("PartsId");
-
-                    b.ToTable("OrderPart");
-                });
-
             modelBuilder.Entity("AutoSpare.Domain.Entities.Category", b =>
                 {
                     b.HasOne("AutoSpare.Domain.Entities.Category", "ParentCategory")
@@ -524,6 +527,25 @@ namespace AutoSpare.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("AutoSpare.Domain.Entities.OrderPart", b =>
+                {
+                    b.HasOne("AutoSpare.Domain.Entities.Order", "Order")
+                        .WithMany("OrderPart")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AutoSpare.Domain.Entities.Product.Part", "Part")
+                        .WithMany("OrderPart")
+                        .HasForeignKey("PartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Part");
                 });
 
             modelBuilder.Entity("AutoSpare.Domain.Entities.Product.Model", b =>
@@ -617,21 +639,6 @@ namespace AutoSpare.Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("OrderPart", b =>
-                {
-                    b.HasOne("AutoSpare.Domain.Entities.Order", null)
-                        .WithMany()
-                        .HasForeignKey("OrdersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AutoSpare.Domain.Entities.Product.Part", null)
-                        .WithMany()
-                        .HasForeignKey("PartsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("AutoSpare.Domain.Entities.Category", b =>
                 {
                     b.Navigation("Subcategories");
@@ -640,6 +647,16 @@ namespace AutoSpare.Persistence.Migrations
             modelBuilder.Entity("AutoSpare.Domain.Entities.Identity.AppUser", b =>
                 {
                     b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("AutoSpare.Domain.Entities.Order", b =>
+                {
+                    b.Navigation("OrderPart");
+                });
+
+            modelBuilder.Entity("AutoSpare.Domain.Entities.Product.Part", b =>
+                {
+                    b.Navigation("OrderPart");
                 });
 #pragma warning restore 612, 618
         }

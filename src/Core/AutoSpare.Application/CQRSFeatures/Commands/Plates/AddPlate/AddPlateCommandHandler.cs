@@ -34,20 +34,10 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Plates.AddPlate
             };
             await _repository.AddAsync(plate);
             var resp = await _repository.SaveAsync();
-            if (resp>0)
+            return new()
             {
-                return new()
-                {
-                    Success = true
-                };
-            }
-            else
-            {
-                return new()
-                {
-                    Success = false
-                };
-            }
+                Success = resp > 0
+            };
         }
     }
 }

@@ -35,7 +35,6 @@ namespace AutoSpare.Persistence.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Make>().ToTable(nameof(Make), ProductSchema);
             modelBuilder.Entity<Model>().ToTable(nameof(Domain.Entities.Product.Model), ProductSchema);
             modelBuilder.Entity<Part>().ToTable(nameof(Part), ProductSchema);
@@ -48,7 +47,23 @@ namespace AutoSpare.Persistence.Contexts
         .HasForeignKey(c => c.ParentCategoryId)
         .OnDelete(DeleteBehavior.Restrict);
 
+            //modelBuilder.Entity<Order>().HasMany(x=>x.OrderPart).WithOne(x => x.Order).HasForeignKey(x=>x.OrderId);
+            //modelBuilder.Entity<Part>().HasMany(x=>x.OrderPart).WithOne(x=>x.Part).HasForeignKey(x=>x.PartId);
+            //modelBuilder.Entity<OrderPart>().HasNoKey();
 
+
+            modelBuilder.Entity<OrderPart>()
+                    .HasKey(op => new { op.OrderId, op.PartId });
+
+            modelBuilder.Entity<OrderPart>()
+                .HasOne(op => op.Order)
+                .WithMany(o => o.OrderPart)
+                .HasForeignKey(op => op.OrderId);
+
+            modelBuilder.Entity<OrderPart>()
+                .HasOne(op => op.Part)
+                .WithMany(p => p.OrderPart)
+                .HasForeignKey(op => op.PartId);
             modelBuilder.Entity<AppUser>()
            .HasMany(u => u.Orders)
            .WithOne(o => o.AppUser)
@@ -57,6 +72,7 @@ namespace AutoSpare.Persistence.Contexts
 
             modelBuilder.Entity<CityCode>().Property(e => e.Id)
       .ValueGeneratedOnAdd();
+            base.OnModelCreating(modelBuilder);
         }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

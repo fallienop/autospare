@@ -32,16 +32,9 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Parts.AddPart
             });
 
             var resp = await _repository.SaveAsync();
-            if(resp>0)
-            {
-                return new()
-                {
-                    Success = true
-                };
-            }
             return new()
             {
-                Success = false
+                Success = resp > 0
             };
         }
     }

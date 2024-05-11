@@ -21,16 +21,9 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Companies.AddCompany
         {
             await _repository.AddAsync(new() { Name = request.Name });
             var resp = await _repository.SaveAsync();
-            if (resp > 0)
-            {
-                return new()
-                {
-                    Success = true
-                };
-            }
             return new()
             {
-                Success = false
+                Success = resp > 0
             };
         }
     }

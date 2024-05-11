@@ -23,13 +23,10 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Models.AddModeloMake
             await _repository.AddAsync(new() {MakeId=request.Id, Name=request.Name });
             var resp = await _repository.SaveAsync();
 
-
-            if (resp > 0)
+            return new()
             {
-                return new() { Success = true };
-
-            }
-            return new() { Success = false };
+                Success = resp > 0
+            };
         }
     }
 }

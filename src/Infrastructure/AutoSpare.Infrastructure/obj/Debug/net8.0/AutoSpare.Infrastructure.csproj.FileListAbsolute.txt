@@ -1,9 +1,3 @@
-C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\obj\Debug\net8.0\AutoSpare.Infrastructure.csproj.AssemblyReference.cache
-C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\obj\Debug\net8.0\AutoSpare.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\obj\Debug\net8.0\AutoSpare.Infrastructure.AssemblyInfoInputs.cache
-C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\obj\Debug\net8.0\AutoSpare.Infrastructure.AssemblyInfo.cs
-C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\obj\Debug\net8.0\AutoSpare.Infrastructure.csproj.CoreCompileInputs.cache
-C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\obj\Debug\net8.0\AutoSpare.Infrastructure.sourcelink.json
 C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\bin\Debug\net8.0\AutoSpare.Infrastructure.deps.json
 C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\bin\Debug\net8.0\AutoSpare.Infrastructure.dll
 C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\bin\Debug\net8.0\AutoSpare.Infrastructure.pdb
@@ -11,6 +5,12 @@ C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructur
 C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\bin\Debug\net8.0\AutoSpare.Domain.dll
 C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\bin\Debug\net8.0\AutoSpare.Application.pdb
 C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\bin\Debug\net8.0\AutoSpare.Domain.pdb
+C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\obj\Debug\net8.0\AutoSpare.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\obj\Debug\net8.0\AutoSpare.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\obj\Debug\net8.0\AutoSpare.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\obj\Debug\net8.0\AutoSpare.Infrastructure.AssemblyInfo.cs
+C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\obj\Debug\net8.0\AutoSpare.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\obj\Debug\net8.0\AutoSpare.Infrastructure.sourcelink.json
 C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\obj\Debug\net8.0\AutoSpare.Infrastructure.csproj.CopyComplete
 C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\obj\Debug\net8.0\AutoSpare.Infrastructure.dll
 C:\Users\sahin\source\repos\AutoSpare\src\Infrastructure\AutoSpare.Infrastructure\obj\Debug\net8.0\refint\AutoSpare.Infrastructure.dll

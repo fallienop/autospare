@@ -22,15 +22,12 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Makes.AddNewMake
             await _repository.AddAsync(new() {Name= request.Name });
             var resp = await _repository.SaveAsync();
 
-
-            if (resp > 0)
+            return new()
             {
-                return new() { Success = true };
+                Success = resp > 0
+            };
 
-            }
-            return new() { Success = false };
 
-          
         }
     }
 }

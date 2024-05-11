@@ -1,6 +1,6 @@
-﻿using AutoSpare.Application.CQRSFeatures.Commands.User.CreateUser;
-using AutoSpare.Application.CQRSFeatures.Commands.User.GoogleLogin;
-using AutoSpare.Application.CQRSFeatures.Commands.User.LoginUser;
+﻿using AutoSpare.Application.CQRSFeatures.Commands.Users.CreateUser;
+using AutoSpare.Application.CQRSFeatures.Commands.Users.GoogleLogin;
+using AutoSpare.Application.CQRSFeatures.Commands.Users.LoginUser;
 using AutoSpare.Application.CQRSFeatures.Queries.User.GetAllUsers;
 using AutoSpare.Application.CQRSFeatures.Queries.User.GetUserById;
 using MediatR;

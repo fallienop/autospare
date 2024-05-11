@@ -16,11 +16,10 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Categories.DeleteCategoryB
         {
             await _repository.RemoveByIdAsync(request.Id);
             var resp = await _repository.SaveAsync();
-            if (resp > 0)
+            return new()
             {
-                return new() { Success = true };
-            }
-            return new() { Success = false };
+                Success = resp > 0 
+            };
         }
     }
 }

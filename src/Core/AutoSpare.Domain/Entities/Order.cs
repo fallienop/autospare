@@ -13,10 +13,11 @@ namespace AutoSpare.Domain.Entities
     public class Order : BaseEntity
     {
         public string Address { get; set; } = null!;
-        public ICollection<Part> Parts { get; set; } = new List<Part>();
+        //public virtual ICollection<Part> Parts { get; set; } = new List<Part>();
 
         public string AppUserId { get; set; }
-        public AppUser AppUser { get; set; }
+        public virtual AppUser AppUser { get; set; }
+        public virtual ICollection<OrderPart> OrderPart { get; set; }
 
     }
 }

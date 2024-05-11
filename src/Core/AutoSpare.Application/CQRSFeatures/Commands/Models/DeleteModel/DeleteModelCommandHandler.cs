@@ -26,13 +26,10 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Models.DeleteModel
             }
             _repository.Remove(model);
             var resp=await _repository.SaveAsync();
-
-            if (resp > 0)
+            return new()
             {
-                return new() { Success = true };
-
-            }
-            return new() { Success = false };
+                Success = resp > 0
+            };
         }
     }
 }
