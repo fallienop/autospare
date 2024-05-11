@@ -1,5 +1,6 @@
 ﻿using AutoSpare.Application.Abstractions.Services;
 using AutoSpare.Application.Abstractions.TokenAbstraction;
+using AutoSpare.Infrastructure.Services.Google;
 using AutoSpare.Infrastructure.Services.Storage;
 using AutoSpare.Infrastructure.Services.TokenService;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +18,7 @@ namespace AutoSpare.Infrastructure
         {
             services.AddScoped<IFileService,FileService>();
             services.AddScoped<ITokenHandler, TokenHandler>();
+            services.AddScoped<IGoogleLogin, GoogleLogin>();
         }
     }
 }

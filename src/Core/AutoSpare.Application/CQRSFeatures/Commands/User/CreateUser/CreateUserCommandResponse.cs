@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoSpare.Application.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.User.CreateUser
 {
     public class CreateUserCommandResponse
     {
-        public bool Success { get; set; }
+        public Token Token { get; set; }
     }
 }

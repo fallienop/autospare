@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 
 namespace AutoSpare.Domain.Entities.Identity
 {
-    public class AppUser : IdentityUser<string>
-    {
-    }
+        public class AppUser : IdentityUser<string>
+        {
+            public string NameSurname {  get; set; }
+            public string? RefreshToken { get; set; }
+            public DateTime? RefreshTokenExpiration {  get; set; }
+            public List<Order>? Orders { get; set; }
+        }
 }

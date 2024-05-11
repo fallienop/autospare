@@ -23,15 +23,16 @@ namespace AutoSpare.Persistence.Contexts
         }
 
    
-
+        public DbSet<CityCode> CityCodes { get; set; }
+        public DbSet<Plate> Plates { get; set; }
         public DbSet<Make> Makes { get; set; }
         public DbSet<Model> Models { get; set; }
         public DbSet<Part> Parts { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<Customer> Customers { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Category> Categories { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -39,12 +40,23 @@ namespace AutoSpare.Persistence.Contexts
             modelBuilder.Entity<Model>().ToTable(nameof(Domain.Entities.Product.Model), ProductSchema);
             modelBuilder.Entity<Part>().ToTable(nameof(Part), ProductSchema);
             modelBuilder.Entity<Part>().Property(x => x.Price).HasColumnType("decimal(18,2)");
+            modelBuilder.Entity<Plate>().Property(x => x.Price).HasColumnType("decimal(18,2)");
 
             modelBuilder.Entity<Category>()
         .HasMany(c => c.Subcategories)
         .WithOne(c => c.ParentCategory)
         .HasForeignKey(c => c.ParentCategoryId)
         .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<AppUser>()
+           .HasMany(u => u.Orders)
+           .WithOne(o => o.AppUser)
+           .HasForeignKey(o => o.AppUserId)
+           .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<CityCode>().Property(e => e.Id)
+      .ValueGeneratedOnAdd();
         }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

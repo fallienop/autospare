@@ -8,7 +8,7 @@ namespace AutoSpare.Application.Abstractions.Services
 {
     public interface IFileService
     {
-         void UploadAsync(string fileName,IFormFile file);
+        void UploadAsync(string fileName, IFormFile file);
         //Task<string> RenameSimilarNameAsync(string oldFileName);
     }
 }

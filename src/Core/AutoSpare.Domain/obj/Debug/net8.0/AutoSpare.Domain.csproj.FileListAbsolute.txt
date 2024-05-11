@@ -1,0 +1,13 @@
+C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Domain\obj\Debug\net8.0\AutoSpare.Domain.csproj.AssemblyReference.cache
+C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Domain\obj\Debug\net8.0\AutoSpare.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Domain\obj\Debug\net8.0\AutoSpare.Domain.AssemblyInfoInputs.cache
+C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Domain\obj\Debug\net8.0\AutoSpare.Domain.AssemblyInfo.cs
+C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Domain\obj\Debug\net8.0\AutoSpare.Domain.csproj.CoreCompileInputs.cache
+C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Domain\obj\Debug\net8.0\AutoSpare.Domain.sourcelink.json
+C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Domain\bin\Debug\net8.0\AutoSpare.Domain.deps.json
+C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Domain\bin\Debug\net8.0\AutoSpare.Domain.dll
+C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Domain\bin\Debug\net8.0\AutoSpare.Domain.pdb
+C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Domain\obj\Debug\net8.0\AutoSpare.Domain.dll
+C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Domain\obj\Debug\net8.0\refint\AutoSpare.Domain.dll
+C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Domain\obj\Debug\net8.0\AutoSpare.Domain.pdb
+C:\Users\sahin\source\repos\AutoSpare\src\Core\AutoSpare.Domain\obj\Debug\net8.0\ref\AutoSpare.Domain.dll

@@ -1,9 +1,11 @@
 ﻿
+using AutoSpare.Application.Abstractions.Services;
 using AutoSpare.Application.Repositories.BrandRepo;
 using AutoSpare.Application.Repositories.CategoryRepo;
 using AutoSpare.Application.Repositories.CompanyRepo;
-using AutoSpare.Application.Repositories.CustomerRepo;
+
 using AutoSpare.Application.Repositories.OrderRepo;
+using AutoSpare.Application.Repositories.PlateRepo;
 using AutoSpare.Application.Repositories.ProductRepos.MakeRepo;
 using AutoSpare.Application.Repositories.ProductRepos.ModelRepo;
 using AutoSpare.Application.Repositories.ProductRepos.PartRepo;
@@ -12,19 +14,14 @@ using AutoSpare.Persistence.Contexts;
 using AutoSpare.Persistence.Repositories.BrandRepo;
 using AutoSpare.Persistence.Repositories.CategoryRepo;
 using AutoSpare.Persistence.Repositories.CompanyRepo;
-using AutoSpare.Persistence.Repositories.CustomerRepo;
 using AutoSpare.Persistence.Repositories.OrderRepo;
+using AutoSpare.Persistence.Repositories.PlateRepo;
 using AutoSpare.Persistence.Repositories.ProductRepos.MakeRepo;
 using AutoSpare.Persistence.Repositories.ProductRepos.ModelRepo;
 using AutoSpare.Persistence.Repositories.ProductRepos.PartRepo;
+using AutoSpare.Persistence.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoSpare.Persistence
 {
@@ -40,20 +37,17 @@ namespace AutoSpare.Persistence
             services.AddIdentityCore<AppUser>(opt =>
             {
                 opt.Password.RequiredLength = 8;
-                opt.Password.RequireDigit= false;
-                opt.Password.RequireLowercase= false;
-                opt.Password.RequireUppercase= false;
-                opt.Password.RequireNonAlphanumeric= false;
+                opt.Password.RequireDigit = false;
+                opt.Password.RequireLowercase = false;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequireNonAlphanumeric = false;
                 opt.User.RequireUniqueEmail = true;
             }).AddRoles<AppRole>().AddEntityFrameworkStores<AutoSpareDbContext>();
 
-            services.AddScoped<ICustomerReadRepository,CustomerReadRepository>();  
-            services.AddScoped<ICustomerWriteRepository,CustomerWriteRepository>();
 
             services.AddScoped<IOrderReadRepository, OrderReadRepository>();
             services.AddScoped<IOrderWriteRepository, OrderWriteRepository>();
 
-            
             services.AddScoped<IMakeReadRepository, MakeReadRepository>();
             services.AddScoped<IMakeWriteRepository, MakeWriteRepository>();
 
@@ -66,11 +60,16 @@ namespace AutoSpare.Persistence
             services.AddScoped<ICategoryReadRepository, CategoryReadRepository>();
             services.AddScoped<ICategoryWriteRepository, CategoryWriteRepository>();
 
-            services.AddScoped<IBrandReadRepository,BrandReadRepository>();
-            services.AddScoped<IBrandWriteRepository,BrandWriteRepository>();
+            services.AddScoped<IBrandReadRepository, BrandReadRepository>();
+            services.AddScoped<IBrandWriteRepository, BrandWriteRepository>();
 
             services.AddScoped<ICompanyReadRepository, CompanyReadRepository>();
             services.AddScoped<ICompanyWriteRepository, CompanyWriteRepository>();
+
+            services.AddScoped<IPlateReadRepository, PlateReadRepository>();
+            services.AddScoped<IPlateWriteRepository, PlateWriteRepository>();
+
+            services.AddScoped<IUserService, UserService>();
 
         }
     }

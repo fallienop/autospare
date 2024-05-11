@@ -1,4 +1,5 @@
-﻿using AutoSpare.Domain.Entities.Identity;
+﻿using AutoSpare.Application.Abstractions.Services;
+using AutoSpare.Domain.Entities.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -12,19 +13,21 @@ namespace AutoSpare.Application.CQRSFeatures.Queries.User.GetAllUsers
 {
     public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQueryRequest, GetAllUsersQueryResponse>
     {
-        private readonly UserManager<AppUser> _userManager;
+        private readonly IUserService _userService;
 
-        public GetAllUsersQueryHandler(UserManager<AppUser> userManager)
+        public GetAllUsersQueryHandler(IUserService userService)
         {
-            _userManager = userManager;
+            _userService = userService;
         }
+
+     
 
         public async Task<GetAllUsersQueryResponse> Handle(GetAllUsersQueryRequest request, CancellationToken cancellationToken)
         {
-           var users= await _userManager.Users.ToListAsync();
+           var users= await _userService.GetAllUsers(request.Page,request.Size);
             return new()
             {
-                Users= users
+                Users = users
             };
         }
     }

@@ -1,4 +1,5 @@
 ﻿using AutoSpare.Application.CQRSFeatures.Commands.User.CreateUser;
+using AutoSpare.Application.CQRSFeatures.Commands.User.GoogleLogin;
 using AutoSpare.Application.CQRSFeatures.Commands.User.LoginUser;
 using AutoSpare.Application.CQRSFeatures.Queries.User.GetAllUsers;
 using AutoSpare.Application.CQRSFeatures.Queries.User.GetUserById;
@@ -21,9 +22,9 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllUsers()
-        {
-            var users = await _mediator.Send(new GetAllUsersQueryRequest());    
+        public async Task<IActionResult> GetAllUsers([FromQuery]GetAllUsersQueryRequest request)
+            {
+            var users = await _mediator.Send(request);    
             return Ok(users);
         }
 
@@ -37,14 +38,26 @@ namespace AutoSpare.WebAPI.Controllers
         [HttpPost("/[action]")]
         public async Task<IActionResult> SignUp([FromBody] CreateUserCommandRequest request)
         {
-            var resp=await _mediator.Send(request);
-            if(resp.Success)
+            try
             {
-                return StatusCode((int)HttpStatusCode.Created);
+                var resp = await _mediator.Send(request);
+                if (resp.Token != null)
+                {
+                    return Ok(resp.Token);
+                }
+                else
+                {
+                    // Handle the case when the response token is null
+                    return BadRequest("Failed to sign up. Please try again later.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return StatusCode((int)HttpStatusCode.BadRequest);
+                // Log the exception for debugging purposes
+                Console.WriteLine($"Error occurred during sign up: {ex.Message}");
+
+                // Return a meaningful error response to the client
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred during sign up. Please try again later.");
             }
         }
 
@@ -53,6 +66,13 @@ namespace AutoSpare.WebAPI.Controllers
         public async Task<IActionResult> Login([FromBody] LoginUserCommandRequest request)
         {
             var resp = await _mediator.Send(request);
+            return Ok(resp);
+        }
+
+        [HttpPost("/google-login")]
+        public async Task<IActionResult> GoogleLogin(GoogleLoginCommandRequest request)
+        {
+            var resp= await _mediator.Send(request);
             return Ok(resp);
         }
     }

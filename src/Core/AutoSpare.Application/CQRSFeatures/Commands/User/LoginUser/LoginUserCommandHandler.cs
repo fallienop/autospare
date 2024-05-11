@@ -1,4 +1,5 @@
-﻿using AutoSpare.Application.Abstractions.TokenAbstraction;
+﻿using AutoSpare.Application.Abstractions.Services;
+using AutoSpare.Application.Abstractions.TokenAbstraction;
 using AutoSpare.Application.DTOs;
 using AutoSpare.Domain.Entities.Identity;
 using MediatR;
@@ -10,11 +11,13 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.User.LoginUser
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly ITokenHandler _tokenHandler;
+        private readonly IUserService _userService;
 
-        public LoginUserCommandHandler(UserManager<AppUser> userManager, ITokenHandler tokenHandler)
+        public LoginUserCommandHandler(UserManager<AppUser> userManager, ITokenHandler tokenHandler, IUserService userService)
         {
             _userManager = userManager;
             _tokenHandler = tokenHandler;
+            _userService = userService;
         }
 
         public async Task<LoginUserCommandResponse> Handle(LoginUserCommandRequest request, CancellationToken cancellationToken)
@@ -33,6 +36,7 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.User.LoginUser
             if (resp)
             {
                 Token token = _tokenHandler.CreateAccessToken();
+                await _userService.UpdateRefreshToken(token.RefreshToken, user, token.Expiration);
                 //await _userService.UpdateRefreshTokenAsync(token.RefreshToken, user, token.Expiration, 15);
                 return new LoginUserSuccessCommandResponse() { Token = token };
             }

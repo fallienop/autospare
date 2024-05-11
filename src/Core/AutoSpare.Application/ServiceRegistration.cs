@@ -12,7 +12,15 @@ namespace AutoSpare.Application
     {
         public static void AddApplicationRegistration(this IServiceCollection services) 
         {
+            //var mapperConfig = new MapperConfiguration(mc =>
+            //{
+            //    mc.AddProfile(new AutoMapperProfile());
+            //});
+
+            //IMapper mapper = mapperConfig.CreateMapper();
+            //services.AddSingleton(mapper);
             services.AddMediatR(typeof(ServiceRegistration));
+            //services.AddAutoMapper(typeof(AutoMapperProfile));
         }
 
     }

@@ -10,5 +10,6 @@ namespace AutoSpare.Application.Abstractions.TokenAbstraction
     public interface ITokenHandler
     {
         Token CreateAccessToken();
+        string CreateRefreshToken();
     }
 }

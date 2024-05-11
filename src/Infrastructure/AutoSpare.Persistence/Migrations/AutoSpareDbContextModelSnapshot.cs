@@ -54,6 +54,23 @@ namespace AutoSpare.Persistence.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("AutoSpare.Domain.Entities.CityCode", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CityCodes");
+                });
+
             modelBuilder.Entity("AutoSpare.Domain.Entities.Company", b =>
                 {
                     b.Property<Guid>("Id")
@@ -73,27 +90,6 @@ namespace AutoSpare.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Companies");
-                });
-
-            modelBuilder.Entity("AutoSpare.Domain.Entities.Customer", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("AutoSpare.Domain.Entities.Identity.AppRole", b =>
@@ -148,6 +144,10 @@ namespace AutoSpare.Persistence.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<string>("NameSurname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -164,6 +164,12 @@ namespace AutoSpare.Persistence.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RefreshTokenExpiration")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -198,20 +204,60 @@ namespace AutoSpare.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<Guid>("CustomerId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("AppUserId");
 
                     b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("AutoSpare.Domain.Entities.Plate", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Views")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Plates");
                 });
 
             modelBuilder.Entity("AutoSpare.Domain.Entities.Product.Brand", b =>
@@ -471,13 +517,13 @@ namespace AutoSpare.Persistence.Migrations
 
             modelBuilder.Entity("AutoSpare.Domain.Entities.Order", b =>
                 {
-                    b.HasOne("AutoSpare.Domain.Entities.Customer", "Customer")
+                    b.HasOne("AutoSpare.Domain.Entities.Identity.AppUser", "AppUser")
                         .WithMany("Orders")
-                        .HasForeignKey("CustomerId")
+                        .HasForeignKey("AppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Customer");
+                    b.Navigation("AppUser");
                 });
 
             modelBuilder.Entity("AutoSpare.Domain.Entities.Product.Model", b =>
@@ -591,7 +637,7 @@ namespace AutoSpare.Persistence.Migrations
                     b.Navigation("Subcategories");
                 });
 
-            modelBuilder.Entity("AutoSpare.Domain.Entities.Customer", b =>
+            modelBuilder.Entity("AutoSpare.Domain.Entities.Identity.AppUser", b =>
                 {
                     b.Navigation("Orders");
                 });

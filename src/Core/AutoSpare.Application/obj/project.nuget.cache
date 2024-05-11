@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "GO/mdqMhBtxbUa9pTWPQTIKj6n50UKF/o+S3I5L3eIaRNZh51yStxqZDEpTGSp+uLNp04x380nUvbIlGH8q9ng==",
+  "dgSpecHash": "nvCrNnLoHc1Rczzi1f+7DnQsY4kpW0rRQZgx7KnlXr5TKB+h4hzOjou/34lixCB/fN0QwbAv0LU74+JRnN8+WA==",
   "success": true,
   "projectFilePath": "C:\\Users\\sahin\\source\\repos\\AutoSpare\\src\\Core\\AutoSpare.Application\\AutoSpare.Application.csproj",
   "expectedPackageFiles": [
@@ -45,10 +45,7 @@
     "C:\\Users\\sahin\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\sahin\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.5.1\\system.diagnostics.diagnosticsource.4.5.1.nupkg.sha512",
     "C:\\Users\\sahin\\.nuget\\packages\\system.reflection.metadata\\1.6.0\\system.reflection.metadata.1.6.0.nupkg.sha512",
-    "C:\\Users\\sahin\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
-    "C:\\Users\\sahin\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.18\\microsoft.windowsdesktop.app.ref.7.0.18.nupkg.sha512",
-    "C:\\Users\\sahin\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.18\\microsoft.netcore.app.ref.7.0.18.nupkg.sha512",
-    "C:\\Users\\sahin\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.18\\microsoft.aspnetcore.app.ref.7.0.18.nupkg.sha512"
+    "C:\\Users\\sahin\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }

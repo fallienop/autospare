@@ -15,11 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoSpare.Application", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoSpare.Domain", "src\Core\AutoSpare.Domain\AutoSpare.Domain.csproj", "{3C7E0702-5AC6-4AA6-9707-6FAD348BC0B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoSpare.Infrastructure", "src\Infrastructure\AutoSpare.Infrastructure\AutoSpare.Infrastructure.csproj", "{B99C9E70-4B78-4013-9165-FD3B103B8657}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoSpare.Infrastructure", "src\Infrastructure\AutoSpare.Infrastructure\AutoSpare.Infrastructure.csproj", "{B99C9E70-4B78-4013-9165-FD3B103B8657}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoSpare.Persistence", "src\Infrastructure\AutoSpare.Persistence\AutoSpare.Persistence.csproj", "{ECBC6B73-F2EE-4090-816E-B4D159D20E64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoSpare.Persistence", "src\Infrastructure\AutoSpare.Persistence\AutoSpare.Persistence.csproj", "{ECBC6B73-F2EE-4090-816E-B4D159D20E64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoSpare.WebAPI", "src\Presentation\AutoSpare.WebAPI\AutoSpare.WebAPI.csproj", "{220E1DF7-8813-4136-9C4C-A1A4A9FFFC85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoSpare.WebAPI", "src\Presentation\AutoSpare.WebAPI\AutoSpare.WebAPI.csproj", "{220E1DF7-8813-4136-9C4C-A1A4A9FFFC85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
