@@ -8,5 +8,6 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Orders.AddOrder
 {
     public class AddOrderCommandResponse
     {
+        public bool Success { get; set; }
     }
 }

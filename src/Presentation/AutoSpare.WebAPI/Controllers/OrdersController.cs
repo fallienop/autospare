@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using AutoSpare.Application.CQRSFeatures.Commands.Orders.AddOrder;
+using AutoSpare.Application.CQRSFeatures.Queries.Orders.GetAllOrders;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AutoSpare.WebAPI.Controllers
@@ -15,9 +17,17 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddOrder()
+        public async Task<IActionResult> AddOrder(AddOrderCommandRequest request)
         {
+            var resp = await _mediator.Send(request);
             return Ok();
+        }
+
+        [HttpGet("getall")]
+        public IActionResult GetAllOrders()
+        {
+            var resp=_mediator.Send(new GetAllOrdersQueryRequest());
+            return Ok(resp);
         }
     }
 }

@@ -1,23 +1,31 @@
 ﻿using AutoSpare.Application.Repositories.OrderRepo;
-using AutoSpare.Domain.Entities.Product;
+using AutoSpare.Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoSpare.Application.CQRSFeatures.Commands.Orders.AddOrder
 {
     public class AddOrderCommandHandler : IRequestHandler<AddOrderCommandRequest, AddOrderCommandResponse>
     {
         private readonly IOrderWriteRepository _repository;
-        public Task<AddOrderCommandResponse> Handle(AddOrderCommandRequest request, CancellationToken cancellationToken)
+        public async Task<AddOrderCommandResponse> Handle(AddOrderCommandRequest request, CancellationToken cancellationToken)
         {
-            _repository.AddAsync(new() { 
-            
+
+            var OrderParts=new List<OrderPart>();
+
+            foreach (var pnc in request.PartsandCounts)
+            {
+             
+                OrderParts.Add(new() { Count = pnc.Count,PartId=Guid.Parse(pnc.ProductId) });
+                
+            }
+            await _repository.AddAsync(new() { 
+            OrderPart=OrderParts,
+            Address=request.Address
             });
-            throw new NotImplementedException();
+
+            var resp =await _repository.SaveAsync();
+
+            return new() { Success = resp > 0 };
         }
     }
 }

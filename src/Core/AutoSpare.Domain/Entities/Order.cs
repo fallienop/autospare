@@ -18,6 +18,7 @@ namespace AutoSpare.Domain.Entities
         public string AppUserId { get; set; }
         public virtual AppUser AppUser { get; set; }
         public virtual ICollection<OrderPart> OrderPart { get; set; }
+        public virtual ICollection<Part> Parts { get; set; }
 
     }
 }
