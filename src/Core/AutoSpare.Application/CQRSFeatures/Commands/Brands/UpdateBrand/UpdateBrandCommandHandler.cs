@@ -19,9 +19,10 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Brands.UpdateBrand
 
         public async Task<UpdateBrandCommandResponse> Handle(UpdateBrandCommandRequest request, CancellationToken cancellationToken)
         {
-            var brand = await _repository.Table.FindAsync(request.Brand.Id);
-            brand.Name = request.Brand.Name;
-            _repository.Update(brand);
+            //var brand = await _repository.Table.FindAsync(request.Brand.Id);
+           
+            //brand=request.Brand;
+            _repository.Update(request.Brand);
             var resp = await _repository.SaveAsync();
 
             return new()

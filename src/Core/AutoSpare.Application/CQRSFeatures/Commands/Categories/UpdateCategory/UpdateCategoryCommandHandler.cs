@@ -19,9 +19,9 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Categories.UpdateCategory
 
         public async Task<UpdateCategoryCommandResponse> Handle(UpdateCategoryCommandRequest request, CancellationToken cancellationToken)
         {
-            var category = await _repository.Table.FindAsync(request.Category.Id);
-            category.Name=request.Category.Name;
-            _repository.Update(category);
+            //var category = await _repository.Table.FindAsync(request.Category.Id);
+            //category=request.Category;
+            _repository.Update(request.Category);
             var resp = await _repository.SaveAsync();
 
             return new()

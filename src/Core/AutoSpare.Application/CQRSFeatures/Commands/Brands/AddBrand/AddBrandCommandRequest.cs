@@ -10,5 +10,7 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Brands.AddBrand
     public class AddBrandCommandRequest : IRequest<AddBrandCommandResponse>
     {
         public string Name { get; set; }
+        public byte[]? Image { get; set; }
+
     }
 }

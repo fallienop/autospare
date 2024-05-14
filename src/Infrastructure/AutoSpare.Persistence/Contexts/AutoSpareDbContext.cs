@@ -70,6 +70,24 @@ namespace AutoSpare.Persistence.Contexts
            .HasForeignKey(o => o.AppUserId)
            .OnDelete(DeleteBehavior.Cascade);
 
+            //modelBuilder.Entity<Company>().HasMany(x => x.Employees).WithOne(o => o.Company).HasForeignKey(o => o.CompanyId);
+            //modelBuilder.Entity<AppUser>().HasOne(x => x.Company).WithMany(x => x.Employees).HasForeignKey(x => x.CompanyId);
+
+            //       modelBuilder.Entity<AppUser>()
+            //.HasOne(u => u.Company)           // An AppUser belongs to one Company
+            //.WithMany(c => c.Employees)       // A Company can have many Employees (AppUsers)
+            //.HasForeignKey(u => u.CompanyId) // Foreign key property
+            //.IsRequired();                    // Make CompanyId required
+
+            //       modelBuilder.Entity<Company>()
+            //           .HasMany(c => c.Employees)       // A Company can have many Employees (AppUsers)
+            //           .WithOne(u => u.Company)         // An AppUser belongs to one Company
+            //           .HasForeignKey(u => u.CompanyId);
+
+            //modelBuilder.Entity<Company>().HasMany(x => x.AppUsers).WithOne(o => o.Company).HasForeignKey(x => x.CompanyId).OnDelete(deleteBehavior: DeleteBehavior.Cascade);
+
+            //modelBuilder.Entity<Company>().HasMany(x=>x.AppUsers).WithOne(x=>x.Company).HasForeignKey(o => o.CompanyId).OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<CityCode>().Property(e => e.Id)
       .ValueGeneratedOnAdd();
             base.OnModelCreating(modelBuilder);

@@ -19,7 +19,7 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Companies.AddCompany
 
         public async Task<AddCompanyCommandResponse> Handle(AddCompanyCommandRequest request, CancellationToken cancellationToken)
         {
-            await _repository.AddAsync(new() { Name = request.Name });
+            await _repository.AddAsync(new() { Name = request.Name,Image=request.Image });
             var resp = await _repository.SaveAsync();
             return new()
             {

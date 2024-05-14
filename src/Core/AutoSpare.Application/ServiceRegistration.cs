@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,8 @@ namespace AutoSpare.Application
             //IMapper mapper = mapperConfig.CreateMapper();
             //services.AddSingleton(mapper);
             services.AddMediatR(typeof(ServiceRegistration));
+            //services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddHttpContextAccessor();
             //services.AddAutoMapper(typeof(AutoMapperProfile));
         }
 

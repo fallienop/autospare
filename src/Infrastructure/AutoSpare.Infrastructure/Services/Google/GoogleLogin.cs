@@ -49,7 +49,7 @@ namespace AutoSpare.Infrastructure.Services.Google
                 await _userManager.AddLoginAsync(user, info);
             else
                 throw new Exception("Invalid external authentication");
-            Token token = _tokenHandler.CreateAccessToken();
+            Token token = _tokenHandler.CreateAccessToken(user);
             await _userService.UpdateRefreshToken(token.RefreshToken, user, token.Expiration);
 
             return token;

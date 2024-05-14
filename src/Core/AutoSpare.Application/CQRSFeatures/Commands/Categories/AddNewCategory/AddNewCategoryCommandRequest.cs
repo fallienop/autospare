@@ -12,7 +12,7 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Categories.AddNewCategory
     {
         public string Name { get; set; } = null!;
         public Guid? ParentCategoryId { get; set; }
-  
-        //public string ImageName { get; set; }
+
+        public byte[] Image { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoSpare.Application.DTOs;
+using AutoSpare.Domain.Entities.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace AutoSpare.Application.Abstractions.TokenAbstraction
 {
     public interface ITokenHandler
     {
-        Token CreateAccessToken();
+        Token CreateAccessToken(AppUser user);
         string CreateRefreshToken();
     }
 }

@@ -10,6 +10,8 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Companies.AddCompany
     public class AddCompanyCommandRequest : IRequest<AddCompanyCommandResponse>
     {
         public string Name { get; set; }
+        public byte[]? Image { get; set; }
+
 
     }
 }

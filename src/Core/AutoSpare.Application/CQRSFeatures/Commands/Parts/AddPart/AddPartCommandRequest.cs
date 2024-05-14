@@ -18,7 +18,7 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Parts.AddPart
         public ushort EndYear { get; set; }
         public decimal Price { get; set; }
         public ushort Stock { get; set; }
-        public string? Image { get; set; }
+        public byte[]? Image { get; set; }
         public Guid CategoryId { get; set; }
         //public Guid? CompanyId { get; set; }
         public Guid BrandId { get; set; }

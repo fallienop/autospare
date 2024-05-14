@@ -35,7 +35,7 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Users.LoginUser
 
             if (resp)
             {
-                Token token = _tokenHandler.CreateAccessToken();
+                Token token = _tokenHandler.CreateAccessToken(user);
                 await _userService.UpdateRefreshToken(token.RefreshToken, user, token.Expiration);
                 //await _userService.UpdateRefreshTokenAsync(token.RefreshToken, user, token.Expiration, 15);
                 return new LoginUserSuccessCommandResponse() { Token = token };

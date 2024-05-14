@@ -1,14 +1,16 @@
 ﻿using AutoSpare.Domain.Entities.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AutoSpare.Domain.Entities.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutoSpare.Domain.Entities
 {
     public class Company : BaseEntity
     {
         public string Name { get; set; } = null!;
+        public ICollection<AppUser>? AppUsers { get; set; }
+
+
+        public byte[]? Image { get; set; }
+
     }
 }

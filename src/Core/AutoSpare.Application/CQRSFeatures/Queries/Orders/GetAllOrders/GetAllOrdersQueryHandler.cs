@@ -11,7 +11,7 @@ namespace AutoSpare.Application.CQRSFeatures.Queries.Orders.GetAllOrders
     public class GetAllOrdersQueryHandler : IRequestHandler<GetAllOrdersQueryRequest, GetAllOrdersQueryResponse>
     {
         private readonly IOrderReadRepository _repository;
-
+        
         public GetAllOrdersQueryHandler(IOrderReadRepository repository)
         {
             _repository = repository;
@@ -19,6 +19,7 @@ namespace AutoSpare.Application.CQRSFeatures.Queries.Orders.GetAllOrders
 
         public Task<GetAllOrdersQueryResponse> Handle(GetAllOrdersQueryRequest request, CancellationToken cancellationToken)
         {
+
             var orders = _repository.GetAll(false);
             var resp= new GetAllOrdersQueryResponse()
             {

@@ -34,6 +34,9 @@ namespace AutoSpare.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<byte[]>("Image")
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<string>("ImageName")
                         .HasColumnType("nvarchar(max)");
 
@@ -79,6 +82,9 @@ namespace AutoSpare.Persistence.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("Image")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -127,6 +133,9 @@ namespace AutoSpare.Persistence.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -165,6 +174,9 @@ namespace AutoSpare.Persistence.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<byte[]>("ProfilePhoto")
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<string>("RefreshToken")
                         .HasColumnType("nvarchar(max)");
 
@@ -182,6 +194,8 @@ namespace AutoSpare.Persistence.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -210,6 +224,10 @@ namespace AutoSpare.Persistence.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -286,6 +304,9 @@ namespace AutoSpare.Persistence.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("Image")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -367,8 +388,8 @@ namespace AutoSpare.Persistence.Migrations
                     b.Property<int>("EndYear")
                         .HasColumnType("int");
 
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("Image")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<Guid>("ModelId")
                         .HasColumnType("uniqueidentifier");
@@ -376,6 +397,9 @@ namespace AutoSpare.Persistence.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("OrderId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -398,6 +422,8 @@ namespace AutoSpare.Persistence.Migrations
                     b.HasIndex("CompanyId");
 
                     b.HasIndex("ModelId");
+
+                    b.HasIndex("OrderId");
 
                     b.ToTable("Part", "Product");
                 });
@@ -518,6 +544,17 @@ namespace AutoSpare.Persistence.Migrations
                     b.Navigation("ParentCategory");
                 });
 
+            modelBuilder.Entity("AutoSpare.Domain.Entities.Identity.AppUser", b =>
+                {
+                    b.HasOne("AutoSpare.Domain.Entities.Company", "Company")
+                        .WithMany("AppUsers")
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Company");
+                });
+
             modelBuilder.Entity("AutoSpare.Domain.Entities.Order", b =>
                 {
                     b.HasOne("AutoSpare.Domain.Entities.Identity.AppUser", "AppUser")
@@ -578,6 +615,10 @@ namespace AutoSpare.Persistence.Migrations
                         .HasForeignKey("ModelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("AutoSpare.Domain.Entities.Order", null)
+                        .WithMany("Parts")
+                        .HasForeignKey("OrderId");
 
                     b.Navigation("Brand");
 
@@ -644,6 +685,11 @@ namespace AutoSpare.Persistence.Migrations
                     b.Navigation("Subcategories");
                 });
 
+            modelBuilder.Entity("AutoSpare.Domain.Entities.Company", b =>
+                {
+                    b.Navigation("AppUsers");
+                });
+
             modelBuilder.Entity("AutoSpare.Domain.Entities.Identity.AppUser", b =>
                 {
                     b.Navigation("Orders");
@@ -652,6 +698,8 @@ namespace AutoSpare.Persistence.Migrations
             modelBuilder.Entity("AutoSpare.Domain.Entities.Order", b =>
                 {
                     b.Navigation("OrderPart");
+
+                    b.Navigation("Parts");
                 });
 
             modelBuilder.Entity("AutoSpare.Domain.Entities.Product.Part", b =>
