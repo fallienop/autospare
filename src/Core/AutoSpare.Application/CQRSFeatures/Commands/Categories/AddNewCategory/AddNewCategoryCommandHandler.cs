@@ -19,11 +19,19 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Categories.AddNewCategory
 
         public async Task<AddNewCategoryCommandResponse> Handle(AddNewCategoryCommandRequest request, CancellationToken cancellationToken)
         {
+            var image = request.Image;
+            byte[] imageByte = [];
+            if (image != null)
+            {
+                imageByte = Convert.FromBase64String(image.Substring(image.LastIndexOf(',') + 1));
+            }
+
+
             await _repository.AddAsync(new()
             {
                 Name = request.Name,
                 ParentCategoryId= request.ParentCategoryId,
-                Image=request.Image
+                Image=imageByte
             });
 
           var resp=  await _repository.SaveAsync();

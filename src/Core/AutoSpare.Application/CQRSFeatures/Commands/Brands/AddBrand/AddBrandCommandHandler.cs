@@ -17,14 +17,21 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Brands.AddBrand
             _repository = repository;
         }
 
-        public async Task<AddBrandCommandResponse> Handle(AddBrandCommandRequest request, CancellationToken cancellationToken)
-        {
-            await _repository.AddAsync(new() {Name=request.Name,Image=request.Image });
-            var resp = await _repository.SaveAsync();
-            return new()
+            public async Task<AddBrandCommandResponse> Handle(AddBrandCommandRequest request, CancellationToken cancellationToken)
             {
-                Success = resp > 0 
-            };
-        }
+            
+            var image = request.Image;
+            byte[] imageByte=[];
+            if(image != null) {
+                 imageByte = Convert.FromBase64String(image.Substring(image.LastIndexOf(',') + 1));
+            }
+
+            await _repository.AddAsync(new() {Name=request.Name,Image= imageByte });
+                var resp = await _repository.SaveAsync();
+                return new()
+                {
+                    Success = resp > 0 
+                };
+            }
     }
 }

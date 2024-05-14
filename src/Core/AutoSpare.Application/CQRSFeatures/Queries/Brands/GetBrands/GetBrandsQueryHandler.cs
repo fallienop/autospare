@@ -20,6 +20,9 @@ namespace AutoSpare.Application.CQRSFeatures.Queries.Brands.GetBrands
         public Task<GetBrandsQueryResponse> Handle(GetBrandsQueryRequest request, CancellationToken cancellationToken)
         {
             var brands=_repository.GetAll(false);
+
+         
+            
             var resp = new GetBrandsQueryResponse()
             {
                 Brands = brands

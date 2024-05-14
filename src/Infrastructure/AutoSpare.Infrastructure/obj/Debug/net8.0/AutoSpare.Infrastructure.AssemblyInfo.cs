@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AutoSpare.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+09b8e6d542a5b81b9d7458e458baa731d79a1d8d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d82d6a9547f53e53f1110e020ae9759e55eaf1e9")]
 [assembly: System.Reflection.AssemblyProductAttribute("AutoSpare.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AutoSpare.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

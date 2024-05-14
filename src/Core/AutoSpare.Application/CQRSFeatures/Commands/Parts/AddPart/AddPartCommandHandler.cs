@@ -19,6 +19,14 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Parts.AddPart
 
         public async Task<AddPartCommandResponse> Handle(AddPartCommandRequest request, CancellationToken cancellationToken)
         {
+            var image = request.Image;
+            byte[] imageByte = [];
+            if (image != null)
+            {
+                imageByte = Convert.FromBase64String(image.Substring(image.LastIndexOf(',') + 1));
+            }
+
+
             await _repository.AddAsync(new() {
                 Name=request.Name,
                 ModelId=request.ModelId,
@@ -26,7 +34,7 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Parts.AddPart
                 EndYear=request.EndYear,
                 Price=request.Price,
                 Stock=request.Stock,
-                Image = request.Image,
+                Image = imageByte,
                 CategoryId=request.CategoryId,
                 BrandId=request.BrandId
             });
