@@ -1,10 +1,5 @@
 ﻿using AutoSpare.Application.Repositories.CategoryRepo;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoSpare.Application.CQRSFeatures.Commands.Categories.UpdateCategory
 {
@@ -19,9 +14,29 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Categories.UpdateCategory
 
         public async Task<UpdateCategoryCommandResponse> Handle(UpdateCategoryCommandRequest request, CancellationToken cancellationToken)
         {
-            //var category = await _repository.Table.FindAsync(request.Category.Id);
-            //category=request.Category;
-            _repository.Update(request.Category);
+            var category = await _repository.Table.FindAsync(request.Id);
+            category.Name = request.Name;
+            var image = request.Image;
+            if (image == "deleted")
+            {
+                category.Image = null;
+            }
+            else if (image == "same")
+            {
+
+            }
+            else
+            {
+
+                byte[] imageByte = [];
+                if (image != null)
+                {
+                    imageByte = Convert.FromBase64String(image.Substring(image.LastIndexOf(',') + 1));
+                }
+                category.Image = imageByte;
+
+            }
+            _repository.Update(category);
             var resp = await _repository.SaveAsync();
 
             return new()

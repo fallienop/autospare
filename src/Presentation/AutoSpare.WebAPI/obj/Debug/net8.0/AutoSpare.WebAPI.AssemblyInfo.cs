@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AutoSpare.WebAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d82d6a9547f53e53f1110e020ae9759e55eaf1e9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec202e2253f3d38d409fb1903fbf3684e4473111")]
 [assembly: System.Reflection.AssemblyProductAttribute("AutoSpare.WebAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AutoSpare.WebAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

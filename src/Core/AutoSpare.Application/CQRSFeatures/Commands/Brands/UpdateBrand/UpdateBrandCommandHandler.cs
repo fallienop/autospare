@@ -19,15 +19,34 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Brands.UpdateBrand
 
         public async Task<UpdateBrandCommandResponse> Handle(UpdateBrandCommandRequest request, CancellationToken cancellationToken)
         {
-            //var brand = await _repository.Table.FindAsync(request.Brand.Id);
-           
-            //brand=request.Brand;
-            _repository.Update(request.Brand);
+            var brand = await _repository.Table.FindAsync(request.Id);
+            brand.Name = request.Name;
+            var image = request.Image;
+            if (image == "deleted")
+            {
+                brand.Image = null;
+            }
+            else if (image == "same")
+            {
+
+            }
+            else
+            {
+
+                byte[] imageByte = [];
+                if (image != null)
+                {
+                    imageByte = Convert.FromBase64String(image.Substring(image.LastIndexOf(',') + 1));
+                }
+                brand.Image = imageByte;
+
+            }
+            _repository.Update(brand);
             var resp = await _repository.SaveAsync();
 
             return new()
             {
-                Success = resp > 0 
+                Success = resp > 0
             };
         }
     }

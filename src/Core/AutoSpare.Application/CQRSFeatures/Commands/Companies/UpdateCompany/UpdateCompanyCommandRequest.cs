@@ -10,6 +10,8 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Companies.UpdateCompany
 {
     public class UpdateCompanyCommandRequest : IRequest<UpdateCompanyCommandResponse>
     {
-        public Company Company { get; set; }
+        public Guid Id { get; set; }
+        public string Name { get; set; } = null!;
+        public string? Image { get; set; }
     }
 }

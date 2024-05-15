@@ -19,14 +19,29 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Companies.UpdateCompany
 
         public async Task<UpdateCompanyCommandResponse> Handle(UpdateCompanyCommandRequest request, CancellationToken cancellationToken)
         {
-            //var company = await _repository.Table.FindAsync(request.Company.Id);
-            //if (company == null)
-            //{
-            //    return new() { Success = false };
+            var company = await _repository.Table.FindAsync(request.Id);
+            company.Name = request.Name;
+            var image = request.Image;
+            if (image == "deleted")
+            {
+                company.Image = null;
+            }
+            else if (image == "same")
+            {
 
-            //}
-            //company.Name = request.Company.Name;
-            _repository.Update(request.Company);
+            }
+            else
+            {
+
+                byte[] imageByte = [];
+                if (image != null)
+                {
+                    imageByte = Convert.FromBase64String(image.Substring(image.LastIndexOf(',') + 1));
+                }
+                company.Image = imageByte;
+
+            }
+            _repository.Update(company);
             var resp = await _repository.SaveAsync();
 
             return new()

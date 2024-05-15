@@ -30,7 +30,7 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Categories.AddNewCategory
             await _repository.AddAsync(new()
             {
                 Name = request.Name,
-                ParentCategoryId= request.ParentCategoryId,
+                ParentCategoryId =  request.ParentCategoryId,
                 Image=imageByte
             });
 

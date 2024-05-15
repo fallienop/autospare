@@ -11,7 +11,6 @@ namespace AutoSpare.Domain.Entities
         public Category? ParentCategory { get; set; }
         public ICollection<Category>? Subcategories { get; set; }
         public Guid CategoryId { get; set; }
-        public string? ImageName { get; set; }
 
 
         public byte[]? Image { get; set; }
