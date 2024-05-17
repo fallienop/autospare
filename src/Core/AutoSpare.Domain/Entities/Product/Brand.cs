@@ -12,7 +12,8 @@ namespace AutoSpare.Domain.Entities.Product
     {
         public string Name { get; set; } = null!;
 
-
+        public List<Part> Parts { get; set; }
+        public List<Tire> Tires { get; set; }
         public byte[]? Image { get; set; }
     }
 }

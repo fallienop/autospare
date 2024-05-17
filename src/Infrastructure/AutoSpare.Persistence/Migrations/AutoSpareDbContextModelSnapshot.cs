@@ -37,9 +37,6 @@ namespace AutoSpare.Persistence.Migrations
                     b.Property<byte[]>("Image")
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<string>("ImageName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -385,10 +382,20 @@ namespace AutoSpare.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("EndYear")
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("Image")
+                    b.Property<byte[]>("Image1")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("Image2")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("Image3")
                         .HasColumnType("varbinary(max)");
 
                     b.Property<Guid>("ModelId")
@@ -426,6 +433,61 @@ namespace AutoSpare.Persistence.Migrations
                     b.HasIndex("OrderId");
 
                     b.ToTable("Part", "Product");
+                });
+
+            modelBuilder.Entity("AutoSpare.Domain.Entities.SuggestedProduct", b =>
+                {
+                    b.Property<string>("SuggestedProducts")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("SuggestedProducts");
+                });
+
+            modelBuilder.Entity("AutoSpare.Domain.Entities.Tire", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("BrandId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte>("Height")
+                        .HasColumnType("tinyint");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<byte>("Radius")
+                        .HasColumnType("tinyint");
+
+                    b.Property<string>("Season")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte>("Width")
+                        .HasColumnType("tinyint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BrandId");
+
+                    b.ToTable("Tires");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -597,7 +659,7 @@ namespace AutoSpare.Persistence.Migrations
             modelBuilder.Entity("AutoSpare.Domain.Entities.Product.Part", b =>
                 {
                     b.HasOne("AutoSpare.Domain.Entities.Product.Brand", "Brand")
-                        .WithMany()
+                        .WithMany("Parts")
                         .HasForeignKey("BrandId");
 
                     b.HasOne("AutoSpare.Domain.Entities.Category", "Category")
@@ -627,6 +689,17 @@ namespace AutoSpare.Persistence.Migrations
                     b.Navigation("Company");
 
                     b.Navigation("Model");
+                });
+
+            modelBuilder.Entity("AutoSpare.Domain.Entities.Tire", b =>
+                {
+                    b.HasOne("AutoSpare.Domain.Entities.Product.Brand", "Brand")
+                        .WithMany("Tires")
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Brand");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -700,6 +773,13 @@ namespace AutoSpare.Persistence.Migrations
                     b.Navigation("OrderPart");
 
                     b.Navigation("Parts");
+                });
+
+            modelBuilder.Entity("AutoSpare.Domain.Entities.Product.Brand", b =>
+                {
+                    b.Navigation("Parts");
+
+                    b.Navigation("Tires");
                 });
 
             modelBuilder.Entity("AutoSpare.Domain.Entities.Product.Part", b =>

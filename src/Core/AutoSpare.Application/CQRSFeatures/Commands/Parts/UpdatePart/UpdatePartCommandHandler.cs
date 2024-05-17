@@ -19,7 +19,40 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Parts.UpdatePart
 
         public async Task<UpdatePartCommandResponse> Handle(UpdatePartCommandRequest request, CancellationToken cancellationToken)
         {
-            _repository.Update(request.Part);
+            var image1 = request.Image1;
+            var image2 = request.Image2;
+            var image3 = request.Image3;
+            byte[] imageByte1 = [];
+            byte[] imageByte2 = [];
+            byte[] imageByte3 = [];
+            if (image1 != null)
+            {
+                imageByte1 = Convert.FromBase64String(image1.Substring(image1.LastIndexOf(',') + 1));
+            }
+            if (image2 != null)
+            {
+                imageByte2 = Convert.FromBase64String(image2.Substring(image2.LastIndexOf(',') + 1));
+            }
+            if (image3 != null)
+            {
+                imageByte3 = Convert.FromBase64String(image3.Substring(image3.LastIndexOf(',') + 1));
+            }
+
+            var part = await _repository.Table.FindAsync(request.Id);
+
+            part.Name = request.Name;
+            part.ModelId=request.ModelId;
+            part.StartYear = request.StartYear;
+            part.EndYear=request.EndYear;
+            part.Price= request.Price;
+            part.Stock= request.Stock;
+            part.Image1 = imageByte1;
+            part.Image2 = imageByte2;
+            part.Image3 = imageByte3;
+            part.CategoryId = request.CategoryId;
+            part.Description = request.Description;
+
+            _repository.Update(part);
             var resp = await _repository.SaveAsync();
 
 

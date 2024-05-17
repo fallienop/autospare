@@ -31,6 +31,8 @@ namespace AutoSpare.Persistence.Contexts
         public DbSet<Order> Orders { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Brand> Brands { get; set; }
+        public DbSet<Tire> Tires { get; set; }
+        public DbSet<SuggestedProduct> SuggestedProducts { get; set; }
         public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -40,6 +42,7 @@ namespace AutoSpare.Persistence.Contexts
             modelBuilder.Entity<Part>().ToTable(nameof(Part), ProductSchema);
             modelBuilder.Entity<Part>().Property(x => x.Price).HasColumnType("decimal(18,2)");
             modelBuilder.Entity<Plate>().Property(x => x.Price).HasColumnType("decimal(18,2)");
+            modelBuilder.Entity<Tire>().Property(x => x.Price).HasColumnType("decimal(18,2)");
 
             modelBuilder.Entity<Category>()
         .HasMany(c => c.Subcategories)

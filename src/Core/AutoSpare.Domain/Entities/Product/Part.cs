@@ -1,6 +1,5 @@
 ﻿using AutoSpare.Domain.Entities.Common;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutoSpare.Domain.Entities.Product
 {
@@ -24,14 +23,22 @@ namespace AutoSpare.Domain.Entities.Product
 
         //public ICollection<Order>? Orders { get; set; }
         public virtual ICollection<OrderPart> OrderPart { get; set; }
-  
-        public byte[]? Image { get; set; }
 
-        public Guid CategoryId { get; set; }
+
+        public byte[]? Image1 { get; set; }
+        public byte[]? Image2 { get; set; }
+        public byte[]? Image3 { get; set; }
+
+
         public Category Category { get; set; }
+        public Guid CategoryId { get; set; }
+
         public Brand? Brand { get; set; }
         public Guid? BrandId { get; set; }
+        
         public Company? Company { get; set; }
         public Guid? CompanyId { get; set; }
+        
+        public string Description { get; set; }
     }
 }
