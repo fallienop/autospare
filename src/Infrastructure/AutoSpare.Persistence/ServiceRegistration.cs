@@ -9,6 +9,7 @@ using AutoSpare.Application.Repositories.PlateRepo;
 using AutoSpare.Application.Repositories.ProductRepos.MakeRepo;
 using AutoSpare.Application.Repositories.ProductRepos.ModelRepo;
 using AutoSpare.Application.Repositories.ProductRepos.PartRepo;
+using AutoSpare.Application.Repositories.TireRepo;
 using AutoSpare.Domain.Entities.Identity;
 using AutoSpare.Persistence.Contexts;
 using AutoSpare.Persistence.Repositories.BrandRepo;
@@ -19,6 +20,7 @@ using AutoSpare.Persistence.Repositories.PlateRepo;
 using AutoSpare.Persistence.Repositories.ProductRepos.MakeRepo;
 using AutoSpare.Persistence.Repositories.ProductRepos.ModelRepo;
 using AutoSpare.Persistence.Repositories.ProductRepos.PartRepo;
+using AutoSpare.Persistence.Repositories.TireRepo;
 using AutoSpare.Persistence.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -69,6 +71,8 @@ namespace AutoSpare.Persistence
             services.AddScoped<IPlateReadRepository, PlateReadRepository>();
             services.AddScoped<IPlateWriteRepository, PlateWriteRepository>();
 
+            services.AddScoped<ITireReadRepository,TireReadRepository>();
+            services.AddScoped<ITireWriteRepository, TireWriteRepository>();
             services.AddScoped<IUserService, UserService>();
 
         }

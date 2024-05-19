@@ -47,7 +47,8 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Parts.AddPart
                 Image3 = imageByte3,
                 CategoryId = request.CategoryId,
                 BrandId = request.BrandId,
-                Description=request.Description
+                Description=request.Description,
+                Code= request.Code
                 
             });
 

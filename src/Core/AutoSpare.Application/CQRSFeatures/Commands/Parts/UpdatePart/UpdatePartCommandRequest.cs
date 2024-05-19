@@ -1,18 +1,11 @@
-﻿using AutoSpare.Domain.Entities;
-using AutoSpare.Domain.Entities.Product;
-using MediatR;
-using System;
-using System.Collections.Generic;
+﻿using MediatR;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoSpare.Application.CQRSFeatures.Commands.Parts.UpdatePart
 {
-    public class UpdatePartCommandRequest : IRequest<UpdatePartCommandResponse> 
+    public class UpdatePartCommandRequest : IRequest<UpdatePartCommandResponse>
     {
-       public Guid Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; } = null!;
         public Guid ModelId { get; set; }
 
@@ -36,6 +29,7 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Parts.UpdatePart
 
         public Guid? BrandId { get; set; }
         public string Description { get; set; }
+        public string Code { get; set; }
 
     }
 }

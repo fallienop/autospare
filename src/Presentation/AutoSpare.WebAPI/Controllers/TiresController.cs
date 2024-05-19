@@ -8,7 +8,7 @@ using System.Net;
 
 namespace AutoSpare.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class TiresController : ControllerBase
     {

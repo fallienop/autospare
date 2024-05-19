@@ -17,6 +17,7 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Parts.AddPart
         //public Guid? CompanyId { get; set; }
         public Guid BrandId { get; set; }
         public string Description { get; set; }
+        public string Code { get; set; }
 
 
     }

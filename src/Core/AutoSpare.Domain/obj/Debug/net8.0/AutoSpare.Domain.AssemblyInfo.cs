@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AutoSpare.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+308abb65ce67958d63ef852af99c2aa2c67d18c0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b0b482ff580caec7f7f86032a03fa75894af744")]
 [assembly: System.Reflection.AssemblyProductAttribute("AutoSpare.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AutoSpare.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

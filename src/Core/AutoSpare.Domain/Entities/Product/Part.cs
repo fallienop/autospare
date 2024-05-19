@@ -40,5 +40,6 @@ namespace AutoSpare.Domain.Entities.Product
         public Guid? CompanyId { get; set; }
         
         public string Description { get; set; }
+        public string Code { get; set; }
     }
 }

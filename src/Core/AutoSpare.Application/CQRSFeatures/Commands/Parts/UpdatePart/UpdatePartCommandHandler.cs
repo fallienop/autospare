@@ -51,7 +51,7 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Parts.UpdatePart
             part.Image3 = imageByte3;
             part.CategoryId = request.CategoryId;
             part.Description = request.Description;
-
+            part.Code = request.Code;
             _repository.Update(part);
             var resp = await _repository.SaveAsync();
 

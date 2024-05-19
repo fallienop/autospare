@@ -376,6 +376,10 @@ namespace AutoSpare.Persistence.Migrations
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<Guid?>("CompanyId")
                         .HasColumnType("uniqueidentifier");
 
@@ -453,6 +457,9 @@ namespace AutoSpare.Persistence.Migrations
                     b.Property<Guid>("BrandId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("CompanyId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -477,6 +484,9 @@ namespace AutoSpare.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Stock")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
@@ -486,6 +496,8 @@ namespace AutoSpare.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BrandId");
+
+                    b.HasIndex("CompanyId");
 
                     b.ToTable("Tires");
                 });
@@ -699,7 +711,15 @@ namespace AutoSpare.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("AutoSpare.Domain.Entities.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Brand");
+
+                    b.Navigation("Company");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
