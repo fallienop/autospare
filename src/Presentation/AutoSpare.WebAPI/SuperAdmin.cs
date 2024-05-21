@@ -27,14 +27,14 @@ namespace AutoSpare.WebAPI
             //};
             //var resp =  await _userManager.CreateAsync(user, "aspareSuper548");
 
-            var user = await _userManager.FindByNameAsync("asparesuperadmin");
-           //await _roleManager.CreateAsync(new AppRole()
-           // {
-           //    Id= Guid.NewGuid().ToString(),
-           //     Name = "Superadmin"
-           // });
+            var user = await _userManager.FindByNameAsync("fallienss");
+            await _roleManager.CreateAsync(new AppRole()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = "admin"
+            });
 
-           var resp= await _userManager.AddToRoleAsync(user, "Superadmin");
+            var resp= await _userManager.AddToRoleAsync(user, "admin");
             Console.WriteLine(resp.Errors);
 
         }

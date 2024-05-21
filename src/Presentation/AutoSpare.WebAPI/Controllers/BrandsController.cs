@@ -36,7 +36,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "superadmin")]
+        [Authorize(Roles = "superadmin,admin")]
         public async Task<IActionResult> AddBrand(AddBrandCommandRequest request)
         {
             var resp =await _mediator.Send(request);
@@ -51,7 +51,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "superadmin")]
+        [Authorize(Roles = "superadmin,admin")]
         public async Task<IActionResult> DeleteBrand([FromRoute]DeleteBrandCommandRequest request)
         {
             var resp = await _mediator.Send(request);
@@ -63,7 +63,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpPut]
-        [Authorize(Roles = "superadmin")]
+        [Authorize(Roles = "superadmin,admin")]
         public async Task<IActionResult> UpdateBrand([FromBody] UpdateBrandCommandRequest request)
         {
             var resp = await _mediator.Send(request);

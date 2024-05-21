@@ -13,19 +13,19 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+
 builder.Services.AddControllers();
 
-        //// Add services to the container.
-        //builder.Services.AddIdentity<AppUser, AppRole>()
-        //    .AddEntityFrameworkStores<AutoSpareDbContext>()
-        //    .AddDefaultTokenProviders();
 
-        //builder.Services.AddTransient<SuperAdmin>();
+//builder.Services.AddIdentity<AppUser, AppRole>()
+//    .AddEntityFrameworkStores<AutoSpareDbContext>()
+//    .AddDefaultTokenProviders();
 
-      
+//builder.Services.AddTransient<SuperAdmin>();
 
-     
+
+
+
 builder.Services.AddCors(opt =>
 {
     opt.AddDefaultPolicy(policy =>
@@ -61,9 +61,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 var app = builder.Build();
-// Configure the HTTP request pipeline (if needed).
 
-// Create a new scope to resolve scoped services
 //using (var scope = app.Services.CreateScope())
 //{
 //    var services = scope.ServiceProvider;
@@ -80,7 +78,9 @@ var app = builder.Build();
 //}
 
 //await app.RunAsync();
-// Configure the HTTP request pipeline.
+
+
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -88,7 +88,6 @@ if (app.Environment.IsDevelopment())
 }
 //app.UseExceptionHandler();
 app.UseCors();
-//app.ConfigureExceptionHandler<Program>(app.Services.GetRequiredService<ILogger<Program>>());
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

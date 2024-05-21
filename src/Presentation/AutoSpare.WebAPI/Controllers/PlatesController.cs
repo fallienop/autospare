@@ -28,7 +28,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "superadmin")]
+        [Authorize(Roles = "superadmin,admin")]
         public async Task<IActionResult> AddPlate(AddPlateCommandRequest request)
         {
             var resp = await _mediator.Send(request);
@@ -50,7 +50,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "superadmin")]
+        [Authorize(Roles = "superadmin,admin")]
         public async Task<IActionResult> DeletePlate([FromQuery] DeletePlateCommandRequest request)
         {
             var resp = await _mediator.Send(request);

@@ -45,12 +45,13 @@ namespace AutoSpare.WebAPI.Controllers
 
 
         [HttpPost]
-        [Authorize(Roles = "superadmin")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> AddPart([FromBody] AddPartCommandRequest request)
         {
             var resp = await _mediator.Send(request);
 
-            if (resp.Success)
+            if (resp.Success
+
             {
                 return StatusCode((int)HttpStatusCode.Created);
             }
@@ -60,8 +61,8 @@ namespace AutoSpare.WebAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "admin")]
         [HttpDelete("{id}")]
-        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> DeletePart([FromRoute]DeletePartCommandRequest request)
         {
             var resp = await _mediator.Send(request);
@@ -77,7 +78,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpPut]
-        [Authorize(Roles = "superadmin")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> UpdatePart([FromBody]UpdatePartCommandRequest request)
         {
             var resp = await _mediator.Send(request);

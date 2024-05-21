@@ -22,7 +22,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "superadmin")]
+        [Authorize(Roles = "superadmin,admin")]
         public async Task<IActionResult> AddModelToMake(AddModeloMakeCommandRequest request)
         {
             var resp = await _mediator.Send(request);
@@ -60,7 +60,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "superadmin")]
+        [Authorize(Roles = "superadmin,admin")]
         public async Task<IActionResult> DeleteModelById([FromRoute] DeleteModelCommandRequest request)
         {
             var resp= await _mediator.Send(request);
@@ -75,7 +75,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpPut]
-        [Authorize(Roles = "superadmin")]
+        [Authorize(Roles = "superadmin,admin")]
         public async Task<IActionResult> UpdateModel([FromBody] UpdateModelCommandRequest request)
         {
             var resp=await _mediator.Send(request);

@@ -45,7 +45,7 @@ namespace AutoSpare.WebAPI.Controllers
             return Ok(category.Category);
         }
 
-        [Authorize(Roles = "superadmin")]
+        [Authorize(Roles = "superadmin,admin")]
         [HttpPost]
         public async Task<IActionResult> AddNewCategory(AddNewCategoryCommandRequest request)
         {
@@ -58,7 +58,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "superadmin")]
+        [Authorize(Roles = "superadmin,admin")]
         public async Task<IActionResult> DeleteCategoryById([FromRoute]DeleteCategoryByIdCommandRequest request)
         {
             var resp= await _mediator.Send(request);
@@ -71,7 +71,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpPut]
-        [Authorize(Roles = "superadmin")]
+        [Authorize(Roles = "superadmin,admin")]
         public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryCommandRequest request)
         {
             var resp=await _mediator.Send(request);
