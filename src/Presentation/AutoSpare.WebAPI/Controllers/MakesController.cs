@@ -6,6 +6,7 @@ using AutoSpare.Application.CQRSFeatures.Queries.Makes.GetMakeById;
 using AutoSpare.Application.Repositories.ProductRepos.MakeRepo;
 using AutoSpare.Domain.Entities.Product;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
@@ -48,6 +49,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> AddMakes(AddMakeCommandRequest request)
         {
             var resp =await _mediator.Send(request);
@@ -59,6 +61,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> DeleteMake([FromRoute]DeleteMakeCommandRequest request)
         {
             var resp = await _mediator.Send(request);
@@ -70,6 +73,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> UpdateMake([FromBody] UpdateMakeCommandRequest request)
         {
             var resp=await _mediator.Send(request);

@@ -31,6 +31,7 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Users.CreateUser
                 UserName = request.UserName,
                 Email = request.Email,
                 PhoneNumber = request.PhoneNumber
+
             }, request.Password);
             if (result.Succeeded)
             {
@@ -38,7 +39,7 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Users.CreateUser
                 if (newUser != null)
                 {
                     // User created successfully, perform additional actions if needed
-                    Token token = _tokenHandler.CreateAccessToken(newUser);
+                    Token token = await _tokenHandler.CreateAccessToken(newUser);
                     await _userService.UpdateRefreshToken(token.RefreshToken, newUser, token.Expiration);
                     //await _userService.UpdateRefreshTokenAsync(token.RefreshToken, newUser, token.Expiration, 15);
                     return new CreateUserCommandResponse() { Token = token };

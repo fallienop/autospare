@@ -10,7 +10,7 @@ namespace AutoSpare.Application.Abstractions.TokenAbstraction
 {
     public interface ITokenHandler
     {
-        Token CreateAccessToken(AppUser user);
+       Task<Token> CreateAccessToken(AppUser user);
         string CreateRefreshToken();
     }
 }

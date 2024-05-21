@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AutoSpare.Application.CQRSFeatures.Commands.Orders.AddOrder
+﻿namespace AutoSpare.Application.CQRSFeatures.Commands.Orders.AddOrder
 {
     public class AddOrderCommandResponse
     {
+
+    }
+    public class AddOrderCommandSuccessResponse : AddOrderCommandResponse
+    {
         public bool Success { get; set; }
     }
+    public class AddOrderCommandErrorResponse : AddOrderCommandResponse
+    {
+        public string Message { get; set; }
+    }
+
+
 }

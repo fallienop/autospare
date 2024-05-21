@@ -5,6 +5,7 @@ using AutoSpare.Application.CQRSFeatures.Queries.Categories.GetCategoryById;
 using AutoSpare.Application.CQRSFeatures.Queries.Categories.GetMainCategories;
 using AutoSpare.Application.CQRSFeatures.Queries.Categories.GetSubCategories;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -44,6 +45,7 @@ namespace AutoSpare.WebAPI.Controllers
             return Ok(category.Category);
         }
 
+        [Authorize(Roles = "superadmin")]
         [HttpPost]
         public async Task<IActionResult> AddNewCategory(AddNewCategoryCommandRequest request)
         {
@@ -56,6 +58,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> DeleteCategoryById([FromRoute]DeleteCategoryByIdCommandRequest request)
         {
             var resp= await _mediator.Send(request);
@@ -68,6 +71,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryCommandRequest request)
         {
             var resp=await _mediator.Send(request);

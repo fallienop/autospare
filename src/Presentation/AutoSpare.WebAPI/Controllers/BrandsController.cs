@@ -4,6 +4,7 @@ using AutoSpare.Application.CQRSFeatures.Commands.Brands.UpdateBrand;
 using AutoSpare.Application.CQRSFeatures.Queries.Brands.GetBrandById;
 using AutoSpare.Application.CQRSFeatures.Queries.Brands.GetBrands;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -35,6 +36,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> AddBrand(AddBrandCommandRequest request)
         {
             var resp =await _mediator.Send(request);
@@ -49,6 +51,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> DeleteBrand([FromRoute]DeleteBrandCommandRequest request)
         {
             var resp = await _mediator.Send(request);
@@ -60,6 +63,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> UpdateBrand([FromBody] UpdateBrandCommandRequest request)
         {
             var resp = await _mediator.Send(request);

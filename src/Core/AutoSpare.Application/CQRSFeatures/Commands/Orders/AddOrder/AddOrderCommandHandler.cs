@@ -23,10 +23,12 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Orders.AddOrder
         public async Task<AddOrderCommandResponse> Handle(AddOrderCommandRequest request, CancellationToken cancellationToken)
         {
             var userName = _httpContextAccessor?.HttpContext?.User?.Identity?.Name;
+            
             if (!string.IsNullOrEmpty(userName))
             {
                 AppUser? user=await _userManager.FindByNameAsync(userName);
 
+              
                 var OrderParts = new List<OrderPart>();
 
                 foreach (var pnc in request.PartsandCounts)
@@ -39,14 +41,15 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Orders.AddOrder
                 {
                     OrderPart = OrderParts,
                     Address = request.Address,
-                    AppUserId=user.Id
+                    AppUserId=user.Id,
+                    Status="New"
                 });
-
+         
                 var resp = await _repository.SaveAsync();
 
-                return new() { Success = resp > 0 };
+                return new AddOrderCommandSuccessResponse() { Success = resp > 0 };
             }
-            return new() { Success = false};
+            return new AddOrderCommandErrorResponse() { Message = "Unauthorized User"};
         }
     }
 }

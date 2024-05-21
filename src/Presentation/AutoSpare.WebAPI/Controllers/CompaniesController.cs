@@ -4,6 +4,7 @@ using AutoSpare.Application.CQRSFeatures.Commands.Companies.UpdateCompany;
 using AutoSpare.Application.CQRSFeatures.Queries.Companies.GetCompanies;
 using AutoSpare.Application.CQRSFeatures.Queries.Companies.GetCompanyById;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -36,6 +37,7 @@ namespace AutoSpare.WebAPI.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> AddCompany(AddCompanyCommandRequest request)
         {
             var resp = await _mediator.Send(request);
@@ -50,6 +52,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> DeleteCompany([FromRoute] DeleteCompanyCommandRequest request)
         {
             var resp = await _mediator.Send(request);
@@ -61,6 +64,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
             
         [HttpPut]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> UpdateCompany([FromBody] UpdateCompanyCommandRequest request)
         {
             var resp = await _mediator.Send(request);

@@ -3,6 +3,7 @@ using AutoSpare.Application.CQRSFeatures.Commands.Plates.DeletePlate;
 using AutoSpare.Application.CQRSFeatures.Queries.Plates.GetPlates;
 using AutoSpare.Application.CQRSFeatures.Queries.Plates.GetPlateWithFilter;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -27,6 +28,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> AddPlate(AddPlateCommandRequest request)
         {
             var resp = await _mediator.Send(request);
@@ -48,6 +50,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> DeletePlate([FromQuery] DeletePlateCommandRequest request)
         {
             var resp = await _mediator.Send(request);

@@ -30,7 +30,7 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Users.RefreshTokenLogin
             var user=await _userManager.Users.FirstOrDefaultAsync(x=>x.RefreshToken==request.RefreshToken);
             if(user!=null&& user?.RefreshTokenExpiration > DateTime.UtcNow)
             {
-                var token = _tokenHandler.CreateAccessToken(user);
+                var token = await _tokenHandler.CreateAccessToken(user);
               await  _userService.UpdateRefreshToken(token.RefreshToken, user, token.Expiration);
 
                 return new()

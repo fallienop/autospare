@@ -1,9 +1,13 @@
 ﻿
 using AutoSpare.Application;
+using AutoSpare.Domain.Entities.Identity;
 using AutoSpare.Infrastructure;
 using AutoSpare.Persistence;
+using AutoSpare.Persistence.Contexts;
+using AutoSpare.WebAPI;
 using AutoSpare.WebAPI.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -12,6 +16,16 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 
+        //// Add services to the container.
+        //builder.Services.AddIdentity<AppUser, AppRole>()
+        //    .AddEntityFrameworkStores<AutoSpareDbContext>()
+        //    .AddDefaultTokenProviders();
+
+        //builder.Services.AddTransient<SuperAdmin>();
+
+      
+
+     
 builder.Services.AddCors(opt =>
 {
     opt.AddDefaultPolicy(policy =>
@@ -29,7 +43,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer("Admin",options =>
+    .AddJwtBearer(options =>
+    //.AddJwtBearer("Admin",options =>
     {
         options.TokenValidationParameters = new()
         {
@@ -46,7 +61,25 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 var app = builder.Build();
+// Configure the HTTP request pipeline (if needed).
 
+// Create a new scope to resolve scoped services
+//using (var scope = app.Services.CreateScope())
+//{
+//    var services = scope.ServiceProvider;
+
+//    try
+//    {
+//        var superAdmin = services.GetRequiredService<SuperAdmin>();
+//        await superAdmin.AddSuperAdmin();
+//    }
+//    catch (Exception ex)
+//    {
+//        Console.WriteLine($"An error occurred: {ex.Message}");
+//    }
+//}
+
+//await app.RunAsync();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

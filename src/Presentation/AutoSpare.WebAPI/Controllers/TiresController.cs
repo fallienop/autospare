@@ -3,6 +3,7 @@ using AutoSpare.Application.CQRSFeatures.Commands.Tires.DeleteTire;
 using AutoSpare.Application.CQRSFeatures.Commands.Tires.UpdateTire;
 using AutoSpare.Application.CQRSFeatures.Queries.Tires.GetTires;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -27,6 +28,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> AddTire(AddTireCommandRequest request)
         {
             var resp = await _mediator.Send(request);
@@ -34,6 +36,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> UpdateTire(UpdateTireCommandRequest request)
         {
             var resp = await _mediator.Send(request);
@@ -41,6 +44,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> DeleteTire(DeleteTireCommandRequest request)
         {
             var resp= await _mediator.Send(request);

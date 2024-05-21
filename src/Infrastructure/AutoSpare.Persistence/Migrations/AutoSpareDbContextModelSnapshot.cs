@@ -130,7 +130,7 @@ namespace AutoSpare.Persistence.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("CompanyId")
+                    b.Property<Guid?>("CompanyId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -622,9 +622,7 @@ namespace AutoSpare.Persistence.Migrations
                 {
                     b.HasOne("AutoSpare.Domain.Entities.Company", "Company")
                         .WithMany("AppUsers")
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CompanyId");
 
                     b.Navigation("Company");
                 });

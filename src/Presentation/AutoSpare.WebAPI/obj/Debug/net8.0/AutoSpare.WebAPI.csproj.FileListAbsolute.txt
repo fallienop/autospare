@@ -96,3 +96,8 @@ C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debu
 C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\AutoSpare.WebAPI.pdb
 C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\AutoSpare.WebAPI.genruntimeconfig.cache
 C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\obj\Debug\net8.0\ref\AutoSpare.WebAPI.dll
+C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
+C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata.dll
+C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\sahin\source\repos\AutoSpare\src\Presentation\AutoSpare.WebAPI\bin\Debug\net8.0\Microsoft.Extensions.Options.dll

@@ -5,6 +5,7 @@ using AutoSpare.Application.CQRSFeatures.Queries.Parts.GetAllParts;
 using AutoSpare.Application.CQRSFeatures.Queries.Parts.GetPart;
 using AutoSpare.Application.CQRSFeatures.Queries.Parts.GetPartsByModel;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -44,6 +45,7 @@ namespace AutoSpare.WebAPI.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> AddPart([FromBody] AddPartCommandRequest request)
         {
             var resp = await _mediator.Send(request);
@@ -59,6 +61,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> DeletePart([FromRoute]DeletePartCommandRequest request)
         {
             var resp = await _mediator.Send(request);
@@ -74,6 +77,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> UpdatePart([FromBody]UpdatePartCommandRequest request)
         {
             var resp = await _mediator.Send(request);

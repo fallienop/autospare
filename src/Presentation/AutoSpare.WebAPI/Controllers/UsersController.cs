@@ -3,28 +3,33 @@ using AutoSpare.Application.CQRSFeatures.Commands.Users.GoogleLogin;
 using AutoSpare.Application.CQRSFeatures.Commands.Users.LoginUser;
 using AutoSpare.Application.CQRSFeatures.Queries.User.GetAllUsers;
 using AutoSpare.Application.CQRSFeatures.Queries.User.GetUserById;
+using AutoSpare.Domain.Entities.Identity;
 using MediatR;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace AutoSpare.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly UserManager<AppUser> _userManager;
 
-        public UsersController(IMediator mediator)
+        public UsersController(IMediator mediator, UserManager<AppUser> userManager)
         {
             _mediator = mediator;
+            _userManager = userManager;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllUsers([FromQuery]GetAllUsersQueryRequest request)
-            {
-            var users = await _mediator.Send(request);    
+        public async Task<IActionResult> GetAllUsers([FromQuery] GetAllUsersQueryRequest request)
+        {
+            var users = await _mediator.Send(request);
             return Ok(users);
         }
 
@@ -72,9 +77,26 @@ namespace AutoSpare.WebAPI.Controllers
         [HttpPost("/google-login")]
         public async Task<IActionResult> GoogleLogin(GoogleLoginCommandRequest request)
         {
-            var resp= await _mediator.Send(request);
+            var resp = await _mediator.Send(request);
             return Ok(resp);
+        }
+
+        [HttpGet("me")]
+        [Authorize]
+        public async Task<IActionResult> GetUser()
+        {
+
+            var username = User.FindFirst(ClaimsIdentity.DefaultNameClaimType)?.Value;
+            if (username == null)
+            {
+                return Unauthorized();
+            }
+
+            var user = await _userManager.FindByNameAsync(username);
+            // Retrieve the user details from the database using the userId
+            // your code to get the user from the database
+
+            return Ok(user);
         }
     }
 }
-    
