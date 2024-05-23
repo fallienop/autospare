@@ -3,7 +3,9 @@ using AutoSpare.Application.CQRSFeatures.Commands.Parts.DeletePart;
 using AutoSpare.Application.CQRSFeatures.Commands.Parts.UpdatePart;
 using AutoSpare.Application.CQRSFeatures.Queries.Parts.GetAllParts;
 using AutoSpare.Application.CQRSFeatures.Queries.Parts.GetPart;
+using AutoSpare.Application.CQRSFeatures.Queries.Parts.GetPartsByCategory;
 using AutoSpare.Application.CQRSFeatures.Queries.Parts.GetPartsByModel;
+using AutoSpare.Application.CQRSFeatures.Queries.Parts.GetPartsWithFilter;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -43,6 +45,12 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
 
+        [HttpGet("category/{id}")]
+        public async Task<IActionResult> GetByCategoryId([FromRoute] GetPartsByCategoryQueryRequest request)
+        {
+            var resp = await _mediator.Send(request);
+            return Ok(resp);
+        }
 
         [HttpPost]
         [Authorize(Roles = "admin")]
@@ -50,7 +58,7 @@ namespace AutoSpare.WebAPI.Controllers
         {
             var resp = await _mediator.Send(request);
 
-            if (resp.Success
+            if (resp.Success)
 
             {
                 return StatusCode((int)HttpStatusCode.Created);
@@ -91,6 +99,13 @@ namespace AutoSpare.WebAPI.Controllers
             {
                 return StatusCode((int)HttpStatusCode.BadRequest);
             }
+        }
+
+        [HttpGet("getwithfilter")]
+        public async Task<IActionResult> GetWithFilter([FromQuery] GetPartsWithFilterQueryRequest request)
+        {
+            var resp= await _mediator.Send(request);
+            return Ok(resp);
         }
     }
 }

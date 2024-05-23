@@ -1,13 +1,8 @@
 ﻿
 using AutoSpare.Application;
-using AutoSpare.Domain.Entities.Identity;
 using AutoSpare.Infrastructure;
 using AutoSpare.Persistence;
-using AutoSpare.Persistence.Contexts;
-using AutoSpare.WebAPI;
-using AutoSpare.WebAPI.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -33,6 +28,7 @@ builder.Services.AddCors(opt =>
         //WithOrigins içinə web səhifənin linki (linkləri) yazılacaq
         policy.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();
         policy.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod();
+        policy.WithOrigins("http://localhost:5174").AllowAnyHeader().AllowAnyMethod();
     });
 });
 
@@ -56,8 +52,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidAudience = builder.Configuration["Token:Audience"],
             ValidIssuer = builder.Configuration["Token:Issuer"],
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Token:SecurityKey"])),
-            LifetimeValidator = ( notBefore,  expires, securityToken,  validationParameters)=>expires!=null?expires>DateTime.UtcNow:false
-    };
+            LifetimeValidator = (notBefore, expires, securityToken, validationParameters) => expires != null ? expires > DateTime.UtcNow : false
+        };
     });
 
 var app = builder.Build();

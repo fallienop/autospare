@@ -1,5 +1,6 @@
 ﻿using AutoSpare.Application.CQRSFeatures.Commands.Plates.AddPlate;
 using AutoSpare.Application.CQRSFeatures.Commands.Plates.DeletePlate;
+using AutoSpare.Application.CQRSFeatures.Queries.Plates.GetPlateById;
 using AutoSpare.Application.CQRSFeatures.Queries.Plates.GetPlates;
 using AutoSpare.Application.CQRSFeatures.Queries.Plates.GetPlateWithFilter;
 using MediatR;
@@ -24,6 +25,13 @@ namespace AutoSpare.WebAPI.Controllers
         public IActionResult GetPlates()
         {
             var resp = _mediator.Send(new GetPlatesQueryRequest());
+            return Ok(resp);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetPlateById([FromRoute]GetPlateByIdQueryRequest request)
+        {
+            var resp = await _mediator.Send(request);
             return Ok(resp);
         }
 
