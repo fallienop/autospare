@@ -1,14 +1,16 @@
-﻿using AutoSpare.Application.CQRSFeatures.Commands.Users.CreateUser;
+﻿using AutoSpare.Application.CQRSFeatures.Commands.Users.AddRoleToUser;
+using AutoSpare.Application.CQRSFeatures.Commands.Users.CreateUser;
 using AutoSpare.Application.CQRSFeatures.Commands.Users.GoogleLogin;
 using AutoSpare.Application.CQRSFeatures.Commands.Users.LoginUser;
 using AutoSpare.Application.CQRSFeatures.Queries.User.GetAllUsers;
+using AutoSpare.Application.CQRSFeatures.Queries.User.GetRoleOfUser;
 using AutoSpare.Application.CQRSFeatures.Queries.User.GetUserById;
 using AutoSpare.Domain.Entities.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using System.Net;
 using System.Security.Claims;
 
 namespace AutoSpare.WebAPI.Controllers
@@ -27,13 +29,24 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> GetAllUsers([FromQuery] GetAllUsersQueryRequest request)
         {
             var users = await _mediator.Send(request);
             return Ok(users);
         }
 
+        [HttpPost("roleAdd")]
+        [Authorize(Roles = "superadmin")]
+        public async Task<IActionResult> AddRoleToUser([FromBody] AddRoleToUserCommandRequest request)
+        {
+            var resp = await _mediator.Send(request);
+            return StatusCode(resp.Success ? (int)HttpStatusCode.OK : (int)HttpStatusCode.BadRequest);
+
+        }
+
         [HttpGet("{id}")]
+        [Authorize(Roles = "superadmin")]
         public async Task<IActionResult> GetUserById([FromRoute] GetUserByIdQueryRequest request)
         {
             var user = await _mediator.Send(request);
@@ -67,6 +80,7 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
 
+
         [HttpPost("/[action]")]
         public async Task<IActionResult> Login([FromBody] LoginUserCommandRequest request)
         {
@@ -98,5 +112,14 @@ namespace AutoSpare.WebAPI.Controllers
 
             return Ok(user);
         }
+
+        [HttpGet("getrole/{id}")]
+        [Authorize(Roles = "superadmin")]
+        public async Task<IActionResult> GetRoleOfUser([FromRoute] GetRoleOfUserQueryRequest request)
+        {
+            var resp = await _mediator.Send(request);
+            return Ok(resp);
+        }
+
     }
 }
