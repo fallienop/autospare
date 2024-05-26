@@ -25,30 +25,66 @@ namespace AutoSpare.Infrastructure.Services.TokenService
             _userManager = userManager;
         }
 
+        //public async Task<Token> CreateAccessToken(AppUser user)
+        //{
+        //  var userRoles=  await _userManager.GetRolesAsync(user);
+        //    Token token = new();
+        //    SymmetricSecurityKey securityKey = new(Encoding.UTF8.GetBytes(_configuration["Token:SecurityKey"]));
+        //    SigningCredentials signInCredentials = new(securityKey, SecurityAlgorithms.HmacSha256);
+        //    token.Expiration = DateTime.UtcNow.AddMinutes(int.Parse(_configuration["Token:TokenExpiration"]));
+        //    var ClaimList=new List<Claim>();
+        //    foreach (var role in userRoles)
+        //    {
+        //        ClaimList.Add(new Claim(ClaimTypes.Role, role));
+        //    }
+        //    ClaimList.Add(new(ClaimTypes.Name, user.UserName));
+        //    JwtSecurityToken securityToken = new(
+        //        audience: _configuration["Token:Audience"],
+        //        issuer: _configuration["Token:Issuer"],
+        //        expires: token.Expiration,
+        //        notBefore: DateTime.Now,
+        //        signingCredentials: signInCredentials,
+        //        claims:ClaimList
+        //        );
+        //    JwtSecurityTokenHandler tokenHandler = new();
+        //    token.AccessToken = tokenHandler.WriteToken(securityToken);
+        //    token.RefreshToken = CreateRefreshToken();
+        //    return token;
+        //} 
         public async Task<Token> CreateAccessToken(AppUser user)
         {
-          var userRoles=  await _userManager.GetRolesAsync(user);
+            var userRoles = await _userManager.GetRolesAsync(user);
             Token token = new();
             SymmetricSecurityKey securityKey = new(Encoding.UTF8.GetBytes(_configuration["Token:SecurityKey"]));
             SigningCredentials signInCredentials = new(securityKey, SecurityAlgorithms.HmacSha256);
             token.Expiration = DateTime.UtcNow.AddMinutes(int.Parse(_configuration["Token:TokenExpiration"]));
-            var ClaimList=new List<Claim>();
+            var ClaimList = new List<Claim>();
+
+            // Add roles to claims
             foreach (var role in userRoles)
             {
                 ClaimList.Add(new Claim(ClaimTypes.Role, role));
             }
+
+            // Add username to claims
             ClaimList.Add(new(ClaimTypes.Name, user.UserName));
+
+            // Add companyId to claims
+            ClaimList.Add(new("companyId", user.CompanyId.ToString()));
+
             JwtSecurityToken securityToken = new(
                 audience: _configuration["Token:Audience"],
                 issuer: _configuration["Token:Issuer"],
                 expires: token.Expiration,
-                notBefore: DateTime.Now,
+                notBefore: DateTime.UtcNow,
                 signingCredentials: signInCredentials,
-                claims:ClaimList
-                );
+                claims: ClaimList
+            );
+
             JwtSecurityTokenHandler tokenHandler = new();
             token.AccessToken = tokenHandler.WriteToken(securityToken);
             token.RefreshToken = CreateRefreshToken();
+
             return token;
         }
 

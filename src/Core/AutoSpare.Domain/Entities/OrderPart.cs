@@ -16,5 +16,7 @@ namespace AutoSpare.Domain.Entities
         public virtual Part Part { get; set; }
 
         public int Count { get; set; }
+        public string Status { get; set; }
+
     }
 }

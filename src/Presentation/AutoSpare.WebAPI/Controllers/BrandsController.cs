@@ -22,9 +22,9 @@ namespace AutoSpare.WebAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetBrands()
+        public async Task<ActionResult> GetBrands()
         {
-            var resp = _mediator.Send(new GetBrandsQueryRequest());
+            var resp =await _mediator.Send(new GetBrandsQueryRequest());
             return Ok(resp);
         }
 

@@ -34,15 +34,14 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Orders.AddOrder
                 foreach (var pnc in request.PartsandCounts)
                 {
 
-                    OrderParts.Add(new() { Count = pnc.Count, PartId = Guid.Parse(pnc.ProductId) });
+                    OrderParts.Add(new() { Count = pnc.Count, PartId = Guid.Parse(pnc.ProductId),Status="New" });
 
                 }
                 await _repository.AddAsync(new()
                 {
                     OrderPart = OrderParts,
                     Address = request.Address,
-                    AppUserId=user.Id,
-                    Status="New"
+                    AppUserId=user.Id
                 });
          
                 var resp = await _repository.SaveAsync();
