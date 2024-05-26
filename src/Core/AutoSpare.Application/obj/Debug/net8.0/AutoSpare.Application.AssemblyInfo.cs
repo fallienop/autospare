@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AutoSpare.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+abb0571bbe133768402df3c7737da5565ed6cdcb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff34b7a2543246e98a25fbcf98bd7eb4f94f6ec4")]
 [assembly: System.Reflection.AssemblyProductAttribute("AutoSpare.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AutoSpare.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
