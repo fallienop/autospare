@@ -11,5 +11,6 @@ namespace AutoSpare.Application.CQRSFeatures.Queries.Parts.GetPartsWithFilter
         public int? MaximumPrice { get; set; }
         public string? CategoryId { get; set; }
         public int? Year { get; set; }
+        public string? DetailCode { get; set; }
     }
 }

@@ -48,6 +48,11 @@ namespace AutoSpare.Application.CQRSFeatures.Queries.Parts.GetPartsWithFilter
                 query = query.Where(p => p.Category.Id.ToString() == request.CategoryId);
             }
 
+            if (!string.IsNullOrEmpty(request.DetailCode))
+            {
+                query = query.Where(p => p.Code == request.DetailCode);
+            }
+
             if (request.Year.HasValue)
             {
                 query = query.Where(p => p.EndYear >= request.Year.Value);

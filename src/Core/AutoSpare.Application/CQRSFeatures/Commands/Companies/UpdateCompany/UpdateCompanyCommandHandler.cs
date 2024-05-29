@@ -20,7 +20,33 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Companies.UpdateCompany
         public async Task<UpdateCompanyCommandResponse> Handle(UpdateCompanyCommandRequest request, CancellationToken cancellationToken)
         {
             var company = await _repository.Table.FindAsync(request.Id);
+            if(request.Name!=null)
+            {
             company.Name = request.Name;
+            }
+             
+            if(request.Phone!=null)
+            {
+            company.Phone = request.Phone;
+            }
+
+            if (request.Address != null)
+            {
+                company.Address = request.Address;
+            }
+            if (request.Website != null)
+            {
+                company.Website = request.Website;
+            }
+            if (request.WorkStart != null)
+            {
+                company.WorkStart = request.WorkStart;
+            }
+            if (request.WorkEnd != null)
+            {
+                company.WorkEnd = request.WorkEnd;
+            }
+
             var image = request.Image;
             if (image == "deleted")
             {

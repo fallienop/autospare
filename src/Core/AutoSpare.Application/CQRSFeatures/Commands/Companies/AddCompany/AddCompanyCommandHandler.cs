@@ -27,7 +27,7 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Companies.AddCompany
             }
 
 
-            await _repository.AddAsync(new() { Name = request.Name,Image=imageByte });
+            await _repository.AddAsync(new() { Name = request.Name,Image=imageByte,Phone=request.Phone,Website=request.Website,Address=request.Address,WorkStart=request.WorkStart,WorkEnd=request.WorkEnd });
             var resp = await _repository.SaveAsync();
             return new()
             {

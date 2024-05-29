@@ -1,8 +1,12 @@
 ﻿
 using AutoSpare.Application;
+using AutoSpare.Domain.Entities.Identity;
 using AutoSpare.Infrastructure;
 using AutoSpare.Persistence;
+using AutoSpare.Persistence.Contexts;
+using AutoSpare.WebAPI;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -29,6 +33,9 @@ builder.Services.AddCors(opt =>
         policy.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();
         policy.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod();
         policy.WithOrigins("http://localhost:5174").AllowAnyHeader().AllowAnyMethod();
+        policy.WithOrigins("https://soft-kelpie-005fbe.netlify.app").AllowAnyHeader().AllowAnyMethod();
+        policy.WithOrigins("http://drop.az").AllowAnyHeader().AllowAnyMethod();
+        policy.WithOrigins("https://drop.az").AllowAnyHeader().AllowAnyMethod();
     });
 });
 

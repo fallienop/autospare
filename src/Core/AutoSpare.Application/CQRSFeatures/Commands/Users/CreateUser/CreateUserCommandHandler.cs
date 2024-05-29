@@ -33,6 +33,16 @@ namespace AutoSpare.Application.CQRSFeatures.Commands.Users.CreateUser
                 PhoneNumber = request.PhoneNumber
 
             }, request.Password);
+            if (result.Errors.Any())
+            {
+                var errors = result.Errors;
+                var errorcode = String.Concat(errors);
+                //var errorcode = errors.Concat("/n");
+                //foreach (var item in errors)
+                //{
+                throw new Exception(errorcode);
+            }
+            //}
             if (result.Succeeded)
             {
                 var newUser = await _userManager.FindByEmailAsync(request.Email);
